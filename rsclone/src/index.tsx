@@ -1,13 +1,17 @@
-import '@/assets/stylesheets/index.scss';
-
 import React from 'react';
-import { CookiesProvider } from 'react-cookie';
+import { DndProvider } from 'react-dnd';
+import { HTML5Backend as Backend } from 'react-dnd-html5-backend';
 import ReactDOM from 'react-dom';
-import { BrowserRouter } from 'react-router-dom';
 
-import App from '@/App';
+import '@/assets/stylesheets/index.scss';
+import App from '@/components/App';
+import { AppStateProvider } from '@/components/context/AppStateContext';
 
 ReactDOM.render(
-  <App />,
-  document.getElementById('app')
+  <DndProvider backend={Backend}>
+    <AppStateProvider>
+      <App />
+    </AppStateProvider>
+  </DndProvider>,
+  document.getElementById('root')
 );
