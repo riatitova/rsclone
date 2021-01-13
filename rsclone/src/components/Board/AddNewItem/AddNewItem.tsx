@@ -5,7 +5,7 @@ import { AddItemButton } from '@/assets/stylesheets/styles';
 import NewItemForm from './AddNewItemForm';
 
 interface AddNewItemProps {
-  onAdd(text: string): void;
+  onAdd(itemText: string): void;
   toggleButtonText: string;
   dark?: boolean;
 }
@@ -17,8 +17,8 @@ const AddNewItem = (props: AddNewItemProps) => {
   if (showForm) {
     return (
       <NewItemForm
-        onAdd={text => {
-          onAdd(text);
+        onAdd={itemText => {
+          onAdd(itemText);
           setShowForm(false);
         }}
       />

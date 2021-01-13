@@ -69,7 +69,7 @@ const Column = ({ text, index, id, isPreview }: ColumnProps) => {
       ))}
       <AddNewItem
         toggleButtonText="+ Add another card"
-        onAdd={() => dispatch({ type: 'ADD_TASK', payload: { text, listId: id } })}
+        onAdd={itemText => dispatch({ type: 'ADD_TASK', payload: { itemText, listId: id } })}
         dark
       />
     </ColumnContainer>

@@ -37,7 +37,7 @@ type Action =
   }
   | {
     type: 'ADD_TASK';
-    payload: { text: string; listId: string };
+    payload: { itemText: string; listId: string };
   }
   | {
     type: 'MOVE_LIST';
@@ -81,7 +81,7 @@ const appStateReducer = (state: AppState, action: Action): AppState => {
 
       const updatedTargetList = {
         ...targetList,
-        tasks: [...targetList.tasks, { id: nanoid(), text: action.payload.text }],
+        tasks: [...targetList.tasks, { id: nanoid(), text: action.payload.itemText }],
       };
 
       return {
