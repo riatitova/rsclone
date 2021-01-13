@@ -22,7 +22,7 @@ export const DragPreviewContainer = styled.div<DragPreviewContainerProps>`
 
 export const ColumnContainer = styled(DragPreviewContainer)`
   background-color: #ebecf0;
-  width: 300px;
+  width: 18.5rem;
   min-height: 40px;
   margin-right: 20px;
   border-radius: 3px;
