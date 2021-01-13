@@ -12,8 +12,8 @@ const Board = () => {
   return (
     <AppContainer>
       <CustomDragLayer />
-      {state.lists.map((list, i) => (
-        <Column id={list.id} text={list.text} key={list.id} index={i} />
+      {state.lists.map((list, index) => (
+        <Column id={list.id} text={list.text} key={list.id} index={index} />
       ))}
       <AddNewItem
         toggleButtonText="+ Add another list"

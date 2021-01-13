@@ -22,7 +22,7 @@ const AddNewItemForm = ({ onAdd }: NewItemFormProps) => {
       <NewItemInput
         ref={inputRef}
         value={text}
-        onChange={e => setText(e.target.value)}
+        onChange={event => setText(event.target.value)}
         onKeyPress={handleAddText}
       />
       <NewItemButton onClick={() => onAdd(text)}>Create</NewItemButton>
