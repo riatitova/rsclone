@@ -68,7 +68,7 @@ const Column = ({ text, index, id, isPreview }: ColumnProps) => {
         <Card id={task.id} columnId={id} text={task.text} key={task.id} index={columnIndex} />
       ))}
       <AddNewItem
-        toggleButtonText="+ Add another card"
+        toggleButtonText="+ Add another task"
         onAdd={itemText => dispatch({ type: 'ADD_TASK', payload: { itemText, listId: id } })}
         dark
       />
