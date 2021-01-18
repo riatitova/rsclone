@@ -1,11 +1,25 @@
 import styled from 'styled-components';
 
-export const AppContainer = styled.div`
-  align-items: flex-start;
-  background-color: #3179ba;
+export const PageContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+`;
+
+export const HeaderContainer = styled.div`
   display: flex;
   flex-direction: row;
-  height: 100%;
+  align-items: flex-start;
+  background-color: #fff;
+  width: 100%;
+`;
+
+export const AppContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  background-color: #3179ba;
   padding: 20px;
   width: 100%;
 `;
@@ -16,7 +30,7 @@ interface DragPreviewContainerProps {
 }
 
 export const DragPreviewContainer = styled.div<DragPreviewContainerProps>`
-  transform: ${props => (props.isPreview ? 'rotate(5deg)' : undefined)};
+  transform: ${props => (props.isPreview ? 'rotate(1deg)' : undefined)};
   opacity: ${props => (props.isHidden ? 0 : 1)};
 `;
 
@@ -101,4 +115,10 @@ export const CustomDragLayerContainer = styled.div`
   top: 0;
   width: 100%;
   z-index: 100;
+`;
+
+export const FooterLogo = styled.div`
+  width: 32px;
+  height: 32px;
+  background-image: url('/assets/images/main.svg')
 `;

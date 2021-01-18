@@ -5,6 +5,7 @@ import AddNewItem from '@/components/Board/AddNewItem';
 import Column from '@/components/Board/Column';
 import { useAppState } from '@/components/context/AppStateContext';
 import CustomDragLayer from '@/components/layers/CustomDragLayer';
+// import Footer from '@/components/Footer/Footer';
 
 const Board = () => {
   const { state, dispatch } = useAppState();
@@ -19,6 +20,7 @@ const Board = () => {
         toggleButtonText="+ Add another list"
         onAdd={text => dispatch({ type: 'ADD_LIST', payload: text })}
       />
+      {/*<Footer />*/}
     </AppContainer>
   );
 };
