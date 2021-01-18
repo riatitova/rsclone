@@ -10,9 +10,9 @@ export const PageContainer = styled.div`
 export const HeaderContainer = styled.div`
   display: flex;
   flex-direction: row;
-  align-items: flex-start;
+  align-items: center;
   background-color: #fff;
-  width: 100%;
+  width: 100vw;
 `;
 
 export const AppContainer = styled.div`
@@ -21,7 +21,7 @@ export const AppContainer = styled.div`
   align-items: flex-start;
   background-color: #3179ba;
   padding: 20px;
-  width: 100%;
+  width: 100vw;
 `;
 
 interface DragPreviewContainerProps {

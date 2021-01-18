@@ -1,0 +1,36 @@
+@import "@/assets/stylesheets/index.scss";
+
+.footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+
+  &_icons_wrapper {
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  &_team {
+    margin-right: 0.5rem;
+  }
+
+  &_link {
+    text-decoration: none;
+    color: $color-black;
+  }
+
+  &_icon {
+    margin: 0 0.3rem 0.2rem;
+    padding: 0;
+    height: 1.5rem;
+  }
+
+  &_logo {
+    position: absolute;
+    right: 0.3rem;
+  }
+}

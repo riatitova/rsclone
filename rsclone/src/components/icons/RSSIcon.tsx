@@ -1,13 +1,13 @@
 import React, { FunctionComponent } from 'react';
 
-import Icon from '@/assets/images/rsschool.svg';
+import SchoolIcon from '@/assets/images/rsschool.svg';
 import BaseIcon from '@/components/icons/BaseIcon';
 import type { BaseIconProps } from '@/components/icons/BaseIcon';
 
-const TestIcon: FunctionComponent<BaseIconProps> = ({ ...restProps }) => (
+const RSSFooterIcon: FunctionComponent<BaseIconProps> = ({ ...restProps }) => (
   <BaseIcon {...restProps}>
-    <Icon />
+    <SchoolIcon />
   </BaseIcon>
 );
 
-export default TestIcon;
+export default RSSFooterIcon;
