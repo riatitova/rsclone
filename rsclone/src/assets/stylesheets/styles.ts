@@ -7,7 +7,7 @@ export const PageContainer = styled.div`
   height: 100vh;
 `;
 
-export const HeaderContainer = styled.div`
+export const SmallContainer = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;

@@ -11,7 +11,6 @@ import WomanFooterIcon2 from '@/components/icons/WomanIcon2';
 const Footer = () => {
   return (
     <footer className={style.footer}>
-
       <div className={style.footer__icons_wrapper}>
         <div className={style.footer__title}>DevTeam:</div>
         <div className={style.footer__icon}>

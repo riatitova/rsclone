@@ -4,19 +4,19 @@ import Board from '@/components/Board/Board';
 import Header from '@/components/Header/Header';
 import Footer from '@/components/Footer/Footer';
 
-import {AppContainer, HeaderContainer, PageContainer} from '@/assets/stylesheets/styles';
+import {AppContainer, SmallContainer, PageContainer} from '@/assets/stylesheets/styles';
 
 const App = (): JSX.Element =>
   <PageContainer>
-    <HeaderContainer>
+    <SmallContainer>
       <Header />
-    </HeaderContainer>
+    </SmallContainer>
     <AppContainer>
       <Board />
     </AppContainer>
-    <HeaderContainer>
+    <SmallContainer>
       <Footer />
-    </HeaderContainer>
+    </SmallContainer>
   </PageContainer>;
 
 
