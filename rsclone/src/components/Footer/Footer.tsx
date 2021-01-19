@@ -12,27 +12,27 @@ const Footer = () => {
   return (
     <footer className={style.footer}>
 
-      <div className={style.footer_icons_wrapper}>
-        <div className={style.footer_team}>DevTeam:</div>
-        <div className={style.footer_icon}>
-          <a className={style.footer_link} href="https://github.com/riatitova">
-            <WomanFooterIcon1 className={`${styles.size_xs}`}/>
+      <div className={style.footer__icons_wrapper}>
+        <div className={style.footer__title}>DevTeam:</div>
+        <div className={style.footer__icon}>
+          <a className={style.footer__link} href="https://github.com/riatitova">
+            <WomanFooterIcon1 className={styles.size_xs}/>
           </a>
         </div>
-        <div className={style.footer_icon}>
-          <a className={style.footer_link} href="https://github.com/KantyshVitali">
-            <ManFooterIcon className={`${styles.size_xs}`}/>
+        <div className={style.footer__icon}>
+          <a className={style.footer__link} href="https://github.com/KantyshVitali">
+            <ManFooterIcon className={styles.size_xs}/>
           </a>
         </div>
-        <div className={style.footer_icon}>
-          <a className={style.footer_link} href="https://github.com/grntea">
-            <WomanFooterIcon2 className={`${styles.size_xs}`}/>
+        <div className={style.footer__icon}>
+          <a className={style.footer__link} href="https://github.com/grntea">
+            <WomanFooterIcon2 className={styles.size_xs}/>
           </a>
         </div>
       </div>
-      <div className={style.footer_logo}>
-        <a className={style.footer_link} href="https://rs.school/js/">
-          <RSSFooterIcon className={`${styles.size_sm} ${style.footer_icon}`}/>
+      <div className={style.footer__logo}>
+        <a className={style.footer__link} href="https://rs.school/js/">
+          <RSSFooterIcon className={`${styles.size_sm} ${style.footer__icon}`}/>
         </a>
       </div>
     </footer>

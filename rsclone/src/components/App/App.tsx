@@ -3,8 +3,6 @@ import React from 'react';
 import Board from '@/components/Board/Board';
 import Header from '@/components/Header/Header';
 import Footer from '@/components/Footer/Footer';
-// import RSSIcon from '@/components/icons/RSSIcon';
-// import styles from '@/components/icons/BaseIcon/BaseIcon.scss';
 
 import {AppContainer, HeaderContainer, PageContainer} from '@/assets/stylesheets/styles';
 
