@@ -3,11 +3,17 @@
 $color-black: #000;
 $color-white: #fff;
 
+@font-face {
+  font-family: 'YanoneKaffeesatz';
+  src: url(@/assets/fonts/YanoneKaffeesatz-Regular.ttf);
+}
 
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
     'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  //font-family: 'Verdana', "Arial", sans-serif;
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
