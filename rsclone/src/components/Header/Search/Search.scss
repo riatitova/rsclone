@@ -1,18 +1,19 @@
 @import "@/assets/stylesheets/index.scss";
 
 .search {
+  &__wrapper {
+    position: relative;
+    caret-color: transparent;
+  }
   &__input {
-    width: 13rem;
+    width: 10rem;
     height: 2.5rem;
     padding: 0.1rem 0 0.1rem 3rem;
     border: none;
     border-radius: 2rem;
     outline: none;
     box-shadow: 0.5rem 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
-  }
-
-  &__wrapper {
-    position: relative;
+    caret-color: $color-black;
   }
 
   &__icon {
@@ -27,7 +28,7 @@
 @media (max-width: 768px) {
   .search {
     &__wrapper {
-      width: 25%;
+      width: 7rem;
       height: 2.5rem;
     }
     &__input {

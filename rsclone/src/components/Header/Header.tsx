@@ -8,6 +8,7 @@ import Burger from "@/components/Burger/Burger";
 const Header = () => {
   return (
     <header className={style.header}>
+
       <div className={style.header__icons_wrapper}>
         <Burger />
         <div className={style.header__icon}>
@@ -15,13 +16,15 @@ const Header = () => {
             <HomeHeaderIcon className={styles.size_xs}/>
           </a>
         </div>
+        <Search />
       </div>
 
-      <div>
+      <div className={style.header__title_wrapper}>
         <h1 className={style.header__title}>Trello 2.0</h1>
       </div>
-
-      <Search />
+      <div className={style.header__button_wrapper}>
+        <button className={style.header__button}>Your boards</button>
+      </div>
     </header>
   )
 };

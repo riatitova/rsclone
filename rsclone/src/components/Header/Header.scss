@@ -3,17 +3,18 @@
 .header {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   width: 100%;
   padding: 0 1rem;
 
   &__icons_wrapper {
-    margin: 0;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
+    flex-grow: 1;
+    flex-basis: 100%;
   }
 
   &__link {
@@ -26,18 +27,78 @@
     padding: 0;
     height: 1.5rem;
   }
+
+  &__title_wrapper {
+    flex-shrink: 0;
+  }
+
   &__title {
     margin: 0;
     font-size: 3rem;
+    font-weight: 900;
     letter-spacing: 0.5rem;
+    background: linear-gradient(to right, $color-blue-button 0%, $color-blue-title-end 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  &__button_wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    flex-grow: 1;
+    flex-basis: 100%;
+  }
+
+  &__button {
+    width: 8rem;
+    height: 2.5rem;
+    border-radius: 1rem;
+    border: none;
+    outline: none;
+    font-weight: 600;
+    color: $color-white;
+    background-color: $color-blue-button;
+    text-transform: uppercase;
+    text-align: center;
+    box-shadow: 0.3rem 0.3rem 1rem 0 rgba(0, 0, 0, 0.1);
+
+  }
+  &__button:hover {
+    cursor: pointer;
+    color: $color-blue-button;
+    background-color: $color-white;
+    box-shadow: 0.5rem 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
+    transition: all 0.5s ease;
+  }
+
+  &__button:not(:hover) {
+    transition: all 0.5s ease;
+  }
+  &__button:active {
+    transform: translateY(4px);
   }
 }
 
-@media (max-width: 768px) {
+@media (min-width: 550px) and (max-width: 768px) {
   .header {
     &__title {
-      font-size: 2.5rem;
-      letter-spacing: normal;
+      font-size: 2.2rem;
+      letter-spacing: 0.2rem;
+    }
+  }
+}
+
+@media (max-width: 550px) {
+  .header {
+    &__title {
+      font-size: 2.3rem;
+      letter-spacing: 0.1rem;
+    }
+    &__button {
+      width: 6rem;
+      font-size: 0.7rem;
 
     }
   }

@@ -5,13 +5,13 @@ import AddNewItem from '@/components/Board/AddNewItem';
 import Column from '@/components/Board/Column';
 import { useAppState } from '@/components/context/AppStateContext';
 import CustomDragLayer from '@/components/layers/CustomDragLayer';
-// import Footer from '@/components/Footer/Footer';
+import style from '@/components/Board/Board.scss';
 
 const Board = () => {
   const { state, dispatch } = useAppState();
 
   return (
-    <AppContainer>
+    <AppContainer className={style.board__wrapper}>
       <CustomDragLayer />
       {state.lists.map((list, index) => (
         <Column id={list.id} text={list.text} key={list.id} index={index} />
