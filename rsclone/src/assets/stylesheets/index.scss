@@ -1,14 +1,23 @@
 @charset "UTF-8";
 
 $color-black: #000;
+$color-black-h1: rgba(0, 0, 0, 0.61);
+$color-blue-title-start: #30CFD0;
+$color-blue-title-end: #330867;
 $color-white: #fff;
+$color-blue-button: #06cafe;
 
 
+@font-face {
+  font-family: 'YanoneKaffeesatz';
+  src: local('YanoneKaffeesatz'), url(./fonts/YanoneKaffeesatz-Regular.ttf) format('truetype');
+}
 
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
     'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -30,5 +39,5 @@ html {
 html,
 body,
 #root {
-  height: 100vh;
+  height: 100%;
 }

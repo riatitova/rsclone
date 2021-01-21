@@ -7,7 +7,7 @@ export const PageContainer = styled.div`
   height: 100vh;
 `;
 
-export const HeaderContainer = styled.div`
+export const SmallContainer = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -117,8 +117,3 @@ export const CustomDragLayerContainer = styled.div`
   z-index: 100;
 `;
 
-export const FooterLogo = styled.div`
-  width: 32px;
-  height: 32px;
-  background-image: url('/assets/images/main.svg')
-`;
