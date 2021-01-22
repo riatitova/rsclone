@@ -15,6 +15,7 @@
     align-items: center;
     flex-grow: 1;
     flex-basis: 100%;
+    transition: all 1s ease;
   }
 
   &__link {
@@ -23,13 +24,14 @@
   }
 
   &__icon {
-    margin: 0 0.3rem 0.2rem;
+    margin: 0 0.4rem 0.1rem;
     padding: 0;
     height: 1.5rem;
   }
 
   &__title_wrapper {
     flex-shrink: 0;
+    transition: all 1s ease;
   }
 
   &__title {
@@ -40,6 +42,7 @@
     background: linear-gradient(to right, $color-blue-button 0%, $color-blue-title-end 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    transition: all 1s ease;
   }
 
   &__button_wrapper {
@@ -49,6 +52,7 @@
     align-items: center;
     flex-grow: 1;
     flex-basis: 100%;
+    transition: all 1s ease;
   }
 
   &__button {
@@ -83,9 +87,11 @@
 
 @media (min-width: 550px) and (max-width: 768px) {
   .header {
+    margin-top: 1rem;
     &__title {
       font-size: 2.2rem;
       letter-spacing: 0.2rem;
+      transition: all 1s ease;
     }
   }
 }

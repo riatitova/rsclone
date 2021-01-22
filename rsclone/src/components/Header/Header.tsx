@@ -1,13 +1,13 @@
 import React from 'react';
+import style from "@/components/Header/Header.scss";
+import styles from "@/components/icons/BaseIcon/BaseIcon.scss";
+import HomeHeaderIcon from "@/components/icons/Home";
+import Search from "@/components/Header/Search/Search";
+import Burger from "@/components/Burger/Burger";
 
-import Burger from '@/components/Burger/Burger';
-import style from '@/components/Header/Header.scss';
-import Search from '@/components/Header/Search/Search';
-import styles from '@/components/icons/BaseIcon/BaseIcon.scss';
-import HomeHeaderIcon from '@/components/icons/Home';
-
-const Header = () => (
-  <header className={style.header}>
+const Header = () => {
+  return (
+    <header className={style.header}>
 
     <div className={style.header__icons_wrapper}>
       <Burger />

@@ -1,10 +1,11 @@
 import React from 'react';
+import style from "@/components/Burger/Burger.scss";
 
-import style from '@/components/Burger/Burger.scss';
-
-const Burger = () => (
-  <div className={style.burger}>
-    <div>Burger</div>
-  </div>
-);
+const Burger = () => {
+  return (
+    <div className={style.burger}>
+      <span>Burger</span>
+    </div>
+  )
+}
 export default Burger;
