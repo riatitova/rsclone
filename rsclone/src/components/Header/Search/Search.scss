@@ -1,10 +1,11 @@
-@import "@/assets/stylesheets/index.scss";
+@import "../../../assets/stylesheets/index.scss";
 
 .search {
   &__wrapper {
     position: relative;
     caret-color: transparent;
     margin-right: 0.2rem;
+    z-index: 1;
   }
   &__input {
     width: 10rem;
