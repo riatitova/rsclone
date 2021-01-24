@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
 import Board from '@/components/Board/Board';
 import Header from '@/components/Header/Header';
@@ -20,4 +22,5 @@ const App = (): JSX.Element =>
   </PageContainer>;
 
 
-export default App;
+
+export default connect()(App);

@@ -1,0 +1,23 @@
+const ADD = 'ADD';
+const SUB = 'SUB';
+const ADD_NUMBER = 'NUM';
+const ADD2 = 'ADD2';
+const ADD_BOARD = 'ADD_BOARD';
+const ADD_COLUMN = 'ADD_COLUMN';
+const ADD_TASK = 'ADD_TASK';
+const MOVE_COLUMN = 'MOVE_COLUMN';
+const MOVE_TASK = 'MOVE_TASK';
+const SET_DRAGGED_ITEM = 'SET_DRAGGED_ITEM';
+
+export {
+  ADD,
+  SUB,
+  ADD_NUMBER,
+  ADD2,
+  ADD_BOARD,
+  ADD_COLUMN,
+  ADD_TASK,
+  MOVE_COLUMN,
+  MOVE_TASK,
+  SET_DRAGGED_ITEM,
+};

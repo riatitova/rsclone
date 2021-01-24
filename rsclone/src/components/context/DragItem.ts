@@ -1,4 +1,5 @@
 export type CardDragItem = {
+  boardId: string;
   index: number;
   id: string;
   columnId: string;
@@ -7,6 +8,7 @@ export type CardDragItem = {
 };
 
 export type ColumnDragItem = {
+  boardId: string;
   index: number;
   id: string;
   text: string;
