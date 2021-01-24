@@ -1,26 +1,52 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import { AppContainer } from '@/assets/stylesheets/styles';
 import AddNewItem from '@/components/Board/AddNewItem';
 import Column from '@/components/Board/Column';
-import { useAppState } from '@/components/context/AppStateContext';
 import CustomDragLayer from '@/components/layers/CustomDragLayer';
+import { IBoardList, IColumns } from '@/constants/index';
+import { RootState } from '@/store/reducers/rootReducer';
 
-const Board = () => {
-  const { state, dispatch } = useAppState();
+interface IBoardProps {
+  boardID: string;
+}
 
+interface StateProps {
+  board: IBoardList[];
+}
+
+type Props = StateProps & IBoardProps;
+
+const Board = (props: Props) => {
+  const board: IBoardList = props.board.filter((x: IBoardList) => x.boardId === props.boardID)[0];
+  const columns: IColumns[] = board.boardColumns;
   return (
     <AppContainer>
       <CustomDragLayer />
-      {state.lists.map((list, index) => (
-        <Column id={list.id} text={list.text} key={list.id} index={index} />
+      {columns.map((list: IColumns, index: number) => (
+        <Column
+          id={list.columnId}
+          text={list.columnName}
+          key={list.columnId}
+          index={index}
+          boardId={props.boardID}
+        />
       ))}
       <AddNewItem
         toggleButtonText="+ Add another list"
-        onAdd={text => dispatch({ type: 'ADD_LIST', payload: text })}
+        boardId={props.boardID}
+        functionName="addColumn"
       />
     </AppContainer>
   );
 };
 
-export default Board;
+const mapStateToProps = (state: RootState) => {
+  const boardList: IBoardList[] = state.boardList?.boardList;
+  return {
+    board: boardList,
+  };
+};
+
+export default connect<StateProps, IBoardProps>(mapStateToProps)(Board);
