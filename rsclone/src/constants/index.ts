@@ -65,46 +65,46 @@ interface ISetDraggedItem {
 
 type ActionType =
   | {
-      type: typeof ADD_BOARD;
-      payload: { text: string };
-    }
+    type: typeof ADD_BOARD;
+    payload: { text: string };
+  }
   | {
-      type: typeof ADD_COLUMN;
-      payload: { text: string; boardId: string };
-    }
+    type: typeof ADD_COLUMN;
+    payload: { text: string; boardId: string };
+  }
   | {
-      type: typeof ADD_TASK;
-      payload: {
-        text: string;
-        boardId: string;
-        columnId: string;
-      };
-    }
-  | {
-      type: typeof MOVE_COLUMN;
-      payload: {
-        dragIndex: number;
-        hoverIndex: number;
-        boardId: string;
-      };
-    }
-  | {
-      type: typeof SET_DRAGGED_ITEM;
-      payload: {
-        DragItem: DragItem | undefined;
-        boardId: string;
-      };
-    }
-  | {
-      type: typeof MOVE_TASK;
-      payload: {
-        boardId: string;
-        dragIndex: number;
-        hoverIndex: number;
-        sourceColumn: string;
-        targetColumn: string;
-      };
+    type: typeof ADD_TASK;
+    payload: {
+      text: string;
+      boardId: string;
+      columnId: string;
     };
+  }
+  | {
+    type: typeof MOVE_COLUMN;
+    payload: {
+      dragIndex: number;
+      hoverIndex: number;
+      boardId: string;
+    };
+  }
+  | {
+    type: typeof SET_DRAGGED_ITEM;
+    payload: {
+      DragItem: DragItem | undefined;
+      boardId: string;
+    };
+  }
+  | {
+    type: typeof MOVE_TASK;
+    payload: {
+      boardId: string;
+      dragIndex: number;
+      hoverIndex: number;
+      sourceColumn: string;
+      targetColumn: string;
+    };
+  };
 
 interface IProps1 {
   counter?: number;
