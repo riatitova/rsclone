@@ -6,16 +6,24 @@ const Menu = ({open}) => {
   return (
     <StyledMenu open={open}>
       <a href="/">
-        <span role="img" aria-label="about us">&#x1f4ae;</span>
-        About us
+        <span role="img" aria-label="homepage">&#x1f4ae;</span>
+        Homepage
       </a>
       <a href="/">
-        <span role="img" aria-label="price">&#x1f43c;</span>
-        Pricing
+        <span role="img" aria-label="templates">&#x1f682;</span>
+        Templates
       </a>
       <a href="/">
-        <span role="img" aria-label="contact">&#x1f4e9;</span>
-        Contact
+        <span role="img" aria-label="go to boards">	&#x1f427;</span>
+        Go to boards
+      </a>
+      <a href="/">
+        <span role="img" aria-label="create board">	&#x1f506;</span>
+        Create board
+      </a>
+      <a href="/">
+        <span role="img" aria-label="go to lists">&#x1f352;</span>
+        Go to lists
       </a>
     </StyledMenu>
   )

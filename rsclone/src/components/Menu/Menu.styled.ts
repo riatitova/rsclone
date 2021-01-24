@@ -3,11 +3,11 @@ import style from 'styled-components';
 export const StyledMenu = style.nav`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   background: #FFF;
   height: 100vh;
   text-align: left;
-  padding: 2rem;
+  padding: 5rem 2rem;
   position: absolute;
   top: 0;
   left: 0;
@@ -20,10 +20,10 @@ export const StyledMenu = style.nav`
   }
 
   a {
-    font-size: 2rem;
-    text-transform: uppercase;
-    padding: 2rem 0;
-    font-weight: bold;
+    font-size: 1.5rem;
+    // text-transform: uppercase;
+    padding: 1rem 0;
+    // font-weight: bold;
     letter-spacing: 0.5rem;
     color: #000;
     text-decoration: none;

@@ -1,19 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
+import { useOnClickOutside } from './hook';
 import style from "@/components/Header/Header.scss";
 import styles from "@/components/icons/BaseIcon/BaseIcon.scss";
 import HomeHeaderIcon from "@/components/icons/Home";
-import Search from "@/components/Header/Search/Search";
+import Search from "@/components/Search/Search";
 import Burger from "@/components/Burger/Burger";
 import Menu from "@/components/Menu";
 
 
 function Header() {
   const [open, setOpen] = useState(false);
+  const node = useRef();
+  useOnClickOutside(node, () => setOpen(false));
   return (
     <header className={style.header}>
 
       <div className={style.header__icons_wrapper}>
-        <div>
+        <div ref={node}>
           <Burger open={open} setOpen={setOpen} />
           <Menu open={open} setOpen={setOpen} />
         </div>
