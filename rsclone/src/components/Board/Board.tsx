@@ -5,8 +5,12 @@ import { AppContainer } from '@/assets/stylesheets/styles';
 import AddNewItem from '@/components/Board/AddNewItem';
 import Column from '@/components/Board/Column';
 import CustomDragLayer from '@/components/layers/CustomDragLayer';
+
 import { IBoardList, IColumns } from '@/constants/index';
 import { RootState } from '@/store/reducers/rootReducer';
+
+import style from '@/components/Board/Board.scss';
+
 
 interface IBoardProps {
   boardID: string;
@@ -22,7 +26,7 @@ const Board = (props: Props) => {
   const board: IBoardList = props.board.filter((x: IBoardList) => x.boardId === props.boardID)[0];
   const columns: IColumns[] = board.boardColumns;
   return (
-    <AppContainer>
+    <AppContainer className={style.board__wrapper}>
       <CustomDragLayer />
       {columns.map((list: IColumns, index: number) => (
         <Column
@@ -38,6 +42,7 @@ const Board = (props: Props) => {
         boardId={props.boardID}
         functionName="addColumn"
       />
+      {/*<Footer />*/}
     </AppContainer>
   );
 };

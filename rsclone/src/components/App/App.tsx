@@ -2,28 +2,25 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
-import BoardList from '@/components/BoardList';
+import Board from '@/components/Board/Board';
+import Header from '@/components/Header/Header';
+import Footer from '@/components/Footer/Footer';
 
-const App = () => (
-  <Router>
-    <div>
-      <ul>
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/boardList">board list</Link>
-        </li>
-      </ul>
-      <hr />
-      <Switch>
-        <Route exact path="/" />
-        <Route path="/boardList">
-          <BoardList />
-        </Route>
-      </Switch>
-    </div>
-  </Router>
-);
+import {AppContainer, SmallContainer, PageContainer} from '@/assets/stylesheets/styles';
+
+const App = (): JSX.Element =>
+  <PageContainer>
+    <SmallContainer>
+      <Header />
+    </SmallContainer>
+    <AppContainer>
+      <Board />
+    </AppContainer>
+    <SmallContainer>
+      <Footer />
+    </SmallContainer>
+  </PageContainer>;
+
+
 
 export default connect()(App);

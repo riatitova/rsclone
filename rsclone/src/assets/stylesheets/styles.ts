@@ -1,13 +1,27 @@
 import styled from 'styled-components';
 
-export const AppContainer = styled.div`
-  align-items: flex-start;
-  background-color: #3179ba;
+export const PageContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+`;
+
+export const SmallContainer = styled.div`
   display: flex;
   flex-direction: row;
-  height: 100%;
+  align-items: center;
+  background-color: #fff;
+  width: 100vw;
+`;
+
+export const AppContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  background-color: #3179ba;
   padding: 20px;
-  width: 100%;
+  width: 100vw;
 `;
 
 interface DragPreviewContainerProps {
@@ -16,7 +30,7 @@ interface DragPreviewContainerProps {
 }
 
 export const DragPreviewContainer = styled.div<DragPreviewContainerProps>`
-  transform: ${props => (props.isPreview ? 'rotate(5deg)' : undefined)};
+  transform: ${props => (props.isPreview ? 'rotate(1deg)' : undefined)};
   opacity: ${props => (props.isHidden ? 0 : 1)};
 `;
 
@@ -102,3 +116,4 @@ export const CustomDragLayerContainer = styled.div`
   width: 100%;
   z-index: 100;
 `;
+
