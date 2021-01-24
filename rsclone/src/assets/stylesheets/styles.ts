@@ -116,4 +116,3 @@ export const CustomDragLayerContainer = styled.div`
   width: 100%;
   z-index: 100;
 `;
-
