@@ -119,6 +119,14 @@ interface IProps2 {
   onAdd2?: Dispatch<string>;
 }
 
+interface IMenu {
+  open: boolean;
+}
+
+interface IMenuToggle extends IMenu {
+  setOpen: (v: boolean) => void;
+}
+
 export {
   IState,
   IProps1,
@@ -132,4 +140,6 @@ export {
   IMoveColumn,
   IMoveTask,
   ISetDraggedItem,
+  IMenu,
+  IMenuToggle,
 };

@@ -6,19 +6,22 @@ import HomeHeaderIcon from "@/components/icons/Home";
 import Search from "@/components/Search/Search";
 import Burger from "@/components/Burger/Burger";
 import Menu from "@/components/Menu";
-
+//import { IMenuToggle } from '@/constants';
 
 function Header() {
-  const [open, setOpen] = useState(false);
-  const node = useRef();
+
+  const [open, setOpen] = useState<boolean>(false);
+  const node = useRef<HTMLDivElement>(null);
+
   useOnClickOutside(node, () => setOpen(false));
+
   return (
     <header className={style.header}>
 
       <div className={style.header__icons_wrapper}>
         <div ref={node}>
           <Burger open={open} setOpen={setOpen} />
-          <Menu open={open} setOpen={setOpen} />
+          <Menu open={open} />
         </div>
         <div className={style.header__icon}>
           <a className={style.header__link} href="https://rs.school/js/">

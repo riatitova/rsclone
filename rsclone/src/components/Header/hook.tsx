@@ -1,18 +1,21 @@
-import { useEffect } from 'react';
+import { useEffect, RefObject  } from 'react';
 
-export const useOnClickOutside = (ref, handler) => {
+export const useOnClickOutside = (
+  ref: RefObject<HTMLDivElement>,
+  closeMenu: () => void
+) => {
   useEffect(() => {
-      const listener = event => {
-        if (!ref.current || ref.current.contains(event.target)) {
+      const listener = (event: MouseEvent) => {
+        if (!ref.current || ref.current.contains(event.target as Node)) {
           return;
         }
-        handler(event);
+        closeMenu();
       };
       document.addEventListener('mousedown', listener);
       return () => {
         document.removeEventListener('mousedown', listener);
       };
     },
-    [ref, handler],
+    [ref, closeMenu],
   );
 };
