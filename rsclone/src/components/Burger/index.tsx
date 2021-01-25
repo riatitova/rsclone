@@ -1,3 +1,3 @@
-// import Burger from '@/components/Burger/Burger';
-//
-// export default Burger;
+import Burger from '@/components/Burger/Burger.styled';
+
+export default Burger;

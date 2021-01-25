@@ -1,10 +1,20 @@
 import React from 'react';
+import { bool, func } from 'prop-types';
+import { StyledBurger } from './Burger.styled';
 
-import style from '@/components/Burger/Burger.scss';
+const Burger = ({ open, setOpen }) => {
+  return (
+    <StyledBurger open={open} onClick={() => setOpen(!open)}>
+      <div />
+      <div />
+      <div />
+    </StyledBurger>
+  )
+};
 
-const Burger = () => (
-  <div className={style.burger}>
-    <div>Burger</div>
-  </div>
-);
+Burger.propTypes = {
+  open: bool.isRequired,
+  setOpen: func.isRequired,
+};
+
 export default Burger;

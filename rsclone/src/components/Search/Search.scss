@@ -1,14 +1,17 @@
-@import "@/assets/stylesheets/index.scss";
+@import "../../assets/stylesheets/index.scss";
 
 .search {
   &__wrapper {
     position: relative;
     caret-color: transparent;
+    margin-right: 0.2rem;
+    z-index: 1;
   }
   &__input {
     width: 10rem;
     height: 2.5rem;
     padding: 0.1rem 0 0.1rem 3rem;
+    margin-right: 0.1rem;
     border: none;
     border-radius: 2rem;
     outline: none;

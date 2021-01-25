@@ -1,9 +1,9 @@
 import React from 'react';
-
+import styles from "@/components/icons/BaseIcon/BaseIcon.scss";
 import style from '@/components/Footer/Footer.scss';
-import styles from '@/components/icons/BaseIcon/BaseIcon.scss';
-import ManFooterIcon from '@/components/icons/ManIcon';
-import RSSFooterIcon from '@/components/icons/RSSIcon';
+
+import RSSFooterIcon from "@/components/icons/RSSIcon";
+import ManFooterIcon from "@/components/icons/ManIcon";
 import WomanFooterIcon1 from '@/components/icons/WomanIcon1';
 import WomanFooterIcon2 from '@/components/icons/WomanIcon2';
 
