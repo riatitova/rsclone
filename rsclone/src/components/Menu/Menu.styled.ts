@@ -37,5 +37,7 @@ export const StyledMenu = style.nav`
     &:hover {
       color: #30CFD0;
     }
+    
+  
   }
 `;
