@@ -1,6 +1,8 @@
 import React from 'react';
-import { StyledBurger } from './Burger.styled';
+
 import { IMenuToggle } from '@/constants';
+
+import StyledBurger from './Burger.styled';
 
 const Burger = ({ open, setOpen }: IMenuToggle) => (
   <StyledBurger open={open} onClick={() => setOpen(!open)}>

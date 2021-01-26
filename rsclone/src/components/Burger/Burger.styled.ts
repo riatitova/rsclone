@@ -1,7 +1,8 @@
 import styled from 'styled-components';
+
 import { IMenu } from '@/constants';
 
-export const StyledBurger = styled.button<IMenu>`
+const StyledBurger = styled.button<IMenu>`
   position: relative;
   top: 0.2rem;
   margin: 0 0.3rem;
@@ -43,3 +44,5 @@ export const StyledBurger = styled.button<IMenu>`
     }
   }
 `;
+
+export default StyledBurger;

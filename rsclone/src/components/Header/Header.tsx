@@ -1,12 +1,14 @@
 import React, { useState, useRef } from 'react';
-import { useOnClickOutside } from './hook';
-import style from "@/components/Header/Header.scss";
-import styles from "@/components/icons/BaseIcon/BaseIcon.scss";
-import HomeHeaderIcon from "@/components/icons/Home";
-import Search from "@/components/Search/Search";
-import Burger from "@/components/Burger/Burger";
-import Menu from "@/components/Menu";
-//import { IMenuToggle } from '@/constants';
+
+import Burger from '@/components/Burger/Burger';
+import style from '@/components/Header/Header.scss';
+import Menu from '@/components/Menu';
+import Search from '@/components/Search/Search';
+import styles from '@/components/icons/BaseIcon/BaseIcon.scss';
+import HomeHeaderIcon from '@/components/icons/Home';
+
+import useOnClickOutside from './hook';
+// import { IMenuToggle } from '@/constants';
 
 function Header() {
 
@@ -25,7 +27,7 @@ function Header() {
         </div>
         <div className={style.header__icon}>
           <a className={style.header__link} href="https://rs.school/js/">
-            <HomeHeaderIcon className={styles.size_sm}/>
+            <HomeHeaderIcon className={styles.size_sm} />
           </a>
         </div>
         <Search />
@@ -35,10 +37,10 @@ function Header() {
         <h1 className={style.header__title}>Trello 2.0</h1>
       </div>
       <div className={style.header__button_wrapper}>
-        <button className={style.header__button}>Your boards</button>
+        <button type="button" className={style.header__button}>Your boards</button>
       </div>
     </header>
-  )
+  );
 }
 
 export default Header;
