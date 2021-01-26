@@ -1,4 +1,4 @@
-export const theme = {
+const theme = {
   primaryDark: '#000',
   primaryLight: '#FFF',
   primaryTitle: 'rgba(0,0,0,0.61)',
@@ -7,3 +7,4 @@ export const theme = {
   primaryButton: '#06cafe',
 };
 
+export default theme;

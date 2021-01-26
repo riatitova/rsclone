@@ -1,7 +1,8 @@
 import style from 'styled-components';
+
 import { IMenu } from '@/constants';
 
-export const StyledMenu = style.nav<IMenu>`
+const StyledMenu = style.nav<IMenu>`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -45,3 +46,5 @@ export const StyledMenu = style.nav<IMenu>`
     }
   }
 `;
+
+export default StyledMenu;
