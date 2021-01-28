@@ -3,6 +3,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { CardContainer } from '@/assets/stylesheets/styles';
+import styles from '@/components/icons/BaseIcon/BaseIcon.scss';
+import CardMenuIcon from '@/components/icons/CardMenuIcon';
 // import { DragItem } from '@/components/context/DragItem';
 // import { moveTask } from '@/store/actions/actions';
 
@@ -62,6 +64,7 @@ const ColumnCard = (props: Props) => (
 
   <CardContainer isPreview={props.isPreview} isHidden={false}>
     {props.text}
+    <CardMenuIcon className={styles.size_xs} />
   </CardContainer>
 );
 // const mapDispatchToProps = (dispatch: Dispatch<any>) => ({
