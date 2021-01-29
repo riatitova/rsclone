@@ -3,8 +3,13 @@ const idGenerator = require('../utils/idGenerator');
 const path = require('path');
 const Board = require('../models/board');
 
+<<<<<<< HEAD
 exports.getBoardById = (req, res) => {
     const { boardId } = req.query.id;
+=======
+exports.getBoardaById = (req, res) => {
+    const { boardId } = req.param.id;
+>>>>>>> test: fetch
     console.log('get data by boardId:', boardId);
 
     Board.find({ boardId }).exec((err, board) => {

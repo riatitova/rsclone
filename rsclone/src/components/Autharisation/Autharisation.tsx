@@ -22,9 +22,9 @@ const URLS = {
   postUser: 'localhost:8080/users',
   updateUser: 'localhost:8080/users',
   deleteUser: 'localhost:8080/users',
-};
+}
 
-const Authorisation: React.FC<Props> = props => {
+const Authorisation: React.FC<Props> = (props) => {
   const [name, setName] = useState('');
   const onChangeName = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newName = event.currentTarget.value;
