@@ -6,7 +6,12 @@ import Board from '@/components/Board';
 import { IBoardList } from '@/constants';
 import { addBoard } from '@/store/actions/actions';
 import { RootState } from '@/store/reducers/rootReducer';
-import StyledBoardList, { StyledAddBoardBlock, StyledBoardInputWrapper, StyledBoardLink } from './BoardList.styled';
+
+import { StyledBoardList,
+  StyledAddBoardBlock,
+  StyledBoardInputWrapper,
+  StyledBoardLink,
+} from './BoardList.styled';
 // import style from './BoardList.scss'
 
 interface DispatchProps {
@@ -30,17 +35,16 @@ const BoardList = (props: Props) => {
 
   return (
     <StyledBoardList>
-        <Router>
-            {props.boards?.map(value => (
-              <StyledBoardLink key={value.boardId}>
-                <Link key={value.boardId} to={`${match.url}/board_${value.boardId}`}>
-                  {value.boardName}
-                </Link>
-              </StyledBoardLink>
+      <Router>
+        {props.boards?.map(value => (
+          <StyledBoardLink key={value.boardId}>
+            <Link key={value.boardId} to={`${match.url}/board_${value.boardId}`}>
+              {value.boardName}
+            </Link>
+          </StyledBoardLink>
+        ))}
 
-            ))}
-
-          <Switch>
+        <Switch>
           {/*  <Route path={`${match.url}/boardList`}>
               {props.boards?.map(value => (
                 <Link key={value.boardId} to={`${match.url}/board_${value.boardId}`}>
@@ -49,31 +53,32 @@ const BoardList = (props: Props) => {
               ))}
             </Route>*/}
 
-            {props.boards?.map(value => (
-              <Route key={value.boardId} path={`${match.url}/board_${value.boardId}`}>
-                <Board boardID={value.boardId} />
-              </Route>
-            ))}
-
-          </Switch>
-        </Router>
-        <StyledAddBoardBlock>
-          Add board
-          <StyledBoardInputWrapper>
-            <input
-              className="input"
-              type="text"
-              placeholder="Enter board title.."
-              value={boardName}
-              onChange={changeName}/>
-            <button
-              onClick={props.onAddBoard.bind(this, boardName)}
-            >
-              +
-            </button>
-          </StyledBoardInputWrapper>
-
-        </StyledAddBoardBlock>
+          {props.boards?.map(value => (
+            <Route key={value.boardId} path={`${match.url}/board_${value.boardId}`}>
+              <Board boardID={value.boardId} />
+            </Route>
+          ))}
+        </Switch>
+      </Router>
+      <StyledAddBoardBlock>
+        Add board
+        <StyledBoardInputWrapper>
+          <input
+            className="input"
+            type="text"
+            placeholder="Enter board title.."
+            value={boardName}
+            onChange={changeName}
+          />
+          <button
+            type='submit'
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+            onClick={props.onAddBoard.bind(this, boardName)}
+          >
+            +
+          </button>
+        </StyledBoardInputWrapper>
+      </StyledAddBoardBlock>
     </StyledBoardList>
   );
 };

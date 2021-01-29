@@ -112,7 +112,7 @@ const getInitialState = (name = 'Board') => ({
 });
 
 const getNewBoard = (name: string, boardId: string) => ({
-  boardId: boardId,
+  boardId,
   boardName: name,
   draggedItem: undefined,
   boardColumns: [

@@ -33,24 +33,23 @@ export const AppContainer = styled.div`
   // background-color: #FBFAFA;
   overflow-x: auto;
   overflow-y: auto;
-  
-    &::-webkit-scrollbar-track {
+
+  &::-webkit-scrollbar-track {
     box-shadow: inset 0 0 6px #e5e5e5;
     border-radius: 0.3rem;
-    }
-    &::-webkit-scrollbar-thumb {
-      background-color: #fff;
-      outline: 1px solid #e4e4e4;
-      border-radius: 0.3rem;
-    }
-    &::-webkit-scrollbar-thumb:hover {
-      background-color: #e4e4e4;
-      outline: 1px solid #e5e5e5;
-    }
-    &::-webkit-scrollbar {
-      height: 0.6rem;
-    }
-  
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #fff;
+    outline: 1px solid #e4e4e4;
+    border-radius: 0.3rem;
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: #e4e4e4;
+    outline: 1px solid #e5e5e5;
+  }
+  &::-webkit-scrollbar {
+    height: 0.6rem;
+  }
 `;
 
 interface DragPreviewContainerProps {
