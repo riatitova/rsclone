@@ -12,10 +12,12 @@ export const StyledBoardList = styled.div`
 export const StyledAddBoardBlock = styled.div`
   width: 10rem;
   height: 7rem;
+  margin: 1rem;
   padding: 0.5rem;
-  color: blue;
+  color: #06cafe;
   background-color: #FBFAFA;
   font-size: 0.9rem;
+  font-weight: 600;
   text-align: center;
   text-transform: uppercase;
   border: none;
@@ -23,12 +25,20 @@ export const StyledAddBoardBlock = styled.div`
   box-shadow: 0.5rem 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
 `;
 
+export const StyledBoardLink = styled(StyledAddBoardBlock)`
+  padding: 0;
+  line-height: 7rem;
+  a {
+    text-decoration: none;
+    color: #06cafe;
+  }
+`;
+
 export const StyledBoardInputWrapper = styled.div`
   position: relative;
   height: 2rem;
   width: 9rem;
   margin: 0.5rem 0;
-
   
   input {
     width: 9rem;

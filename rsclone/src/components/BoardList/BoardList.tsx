@@ -6,7 +6,7 @@ import Board from '@/components/Board';
 import { IBoardList } from '@/constants';
 import { addBoard } from '@/store/actions/actions';
 import { RootState } from '@/store/reducers/rootReducer';
-import StyledBoardList, { StyledAddBoardBlock, StyledBoardInputWrapper } from './BoardList.styled';
+import StyledBoardList, { StyledAddBoardBlock, StyledBoardInputWrapper, StyledBoardLink } from './BoardList.styled';
 // import style from './BoardList.scss'
 
 interface DispatchProps {
@@ -31,17 +31,30 @@ const BoardList = (props: Props) => {
   return (
     <StyledBoardList>
         <Router>
-          {props.boards?.map(value => (
-            <Link key={value.boardId} to={`${match.url}/board_${value.boardId}`}>
-              {value.boardName}
-            </Link>
-          ))}
+            {props.boards?.map(value => (
+              <StyledBoardLink key={value.boardId}>
+                <Link key={value.boardId} to={`${match.url}/board_${value.boardId}`}>
+                  {value.boardName}
+                </Link>
+              </StyledBoardLink>
+
+            ))}
+
           <Switch>
+          {/*  <Route path={`${match.url}/boardList`}>
+              {props.boards?.map(value => (
+                <Link key={value.boardId} to={`${match.url}/board_${value.boardId}`}>
+                  {value.boardName}
+                </Link>
+              ))}
+            </Route>*/}
+
             {props.boards?.map(value => (
               <Route key={value.boardId} path={`${match.url}/board_${value.boardId}`}>
                 <Board boardID={value.boardId} />
               </Route>
             ))}
+
           </Switch>
         </Router>
         <StyledAddBoardBlock>
