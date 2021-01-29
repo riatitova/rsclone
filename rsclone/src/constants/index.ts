@@ -31,7 +31,7 @@ interface IBoardList {
 interface IColumns {
   columnId: string;
   columnName: string;
-  columnTasks?: IBoardTasks[];
+  columnTasks: IBoardTasks[];
 }
 
 interface IBoardTasks {
@@ -91,7 +91,7 @@ type ActionType =
   | {
     type: typeof SET_DRAGGED_ITEM;
     payload: {
-      DragItem: DragItem | undefined;
+      Drag: DragItem | undefined;
       boardId: string;
     };
   }
