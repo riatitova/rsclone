@@ -1,9 +1,6 @@
-import { useEffect, RefObject  } from 'react';
+import { useEffect, RefObject } from 'react';
 
-const useOnClickOutside = (
-  ref: RefObject<HTMLDivElement>,
-  closeMenu: () => void
-) => {
+const useOnClickOutside = (ref: RefObject<HTMLDivElement>, closeMenu: () => void) => {
   useEffect(() => {
     const listener = (event: MouseEvent) => {
       if (!ref.current || ref.current.contains(event.target as Node)) {
@@ -15,9 +12,7 @@ const useOnClickOutside = (
     return () => {
       document.removeEventListener('mousedown', listener);
     };
-  },
-  [ref, closeMenu],
-  );
+  }, [ref, closeMenu]);
 };
 
 export default useOnClickOutside;
