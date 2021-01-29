@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 // import { useDrop, useDrag } from 'react-dnd';
 import { connect } from 'react-redux';
 
 import { CardContainer } from '@/assets/stylesheets/styles';
 import styles from '@/components/icons/BaseIcon/BaseIcon.scss';
 import CardMenuIcon from '@/components/icons/CardMenuIcon';
+
+import CardMenu from './CardMenu';
 // import { DragItem } from '@/components/context/DragItem';
 // import { moveTask } from '@/store/actions/actions';
 
@@ -24,7 +26,14 @@ interface ColumnProps {
 
 type Props = ColumnProps;
 
-const ColumnCard = (props: Props) => (
+const ColumnCard = (props: Props) => {
+
+  const [showPopup, setShowPopup] = useState(false);
+  function togglePopup() {
+    setShowPopup(!showPopup);
+  }
+
+  return (
   // const ref = useRef<HTMLDivElement>(null);
 
   // const [, drop] = useDrop({
@@ -62,11 +71,21 @@ const ColumnCard = (props: Props) => (
 
   // drag(drop(ref));
 
-  <CardContainer isPreview={props.isPreview} isHidden={false}>
-    {props.text}
-    <CardMenuIcon className={styles.size_xs} />
-  </CardContainer>
-);
+    <CardContainer isPreview={props.isPreview} isHidden={false}>
+      {props.text}
+      <CardMenuIcon className={styles.size_xs} onClick={togglePopup} />
+      {showPopup ? (
+        <CardMenu
+          text={props.text}
+          isVisible
+        />
+      )
+        : null}
+      {/* <CardMenu text={props.text} isVisible={false}/> */}
+    </CardContainer>
+  
+  );
+};
 // const mapDispatchToProps = (dispatch: Dispatch<any>) => ({
 //   onMoveTask: (dragIndex: number, hoverIndex: number, sourceColumn: string,
 // 		 targetColumn: string, boardId: string) =>
