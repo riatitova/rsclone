@@ -139,7 +139,8 @@ const boardList = (state = initialState, action: ActionType) => {
         boardList: [...state.boardList, getNewState(action.payload.text || '', nanoid())],
       };
     case ADD_COLUMN: {
-      const targetBoardIndex = state.boardList.findIndex(x => x.boardId === action.payload.boardId);
+      const targetBoardIndex = state.boardList.findIndex(
+        x => x.boardId === action.payload.boardId);
 
       const targetBoard = state.boardList[targetBoardIndex];
 
@@ -157,12 +158,16 @@ const boardList = (state = initialState, action: ActionType) => {
 
       return {
         ...state,
-        boardList: overrideItemAtIndex(state.boardList, updatedColumnList, targetBoardIndex),
+        boardList: overrideItemAtIndex(
+          state.boardList,
+          updatedColumnList,
+          targetBoardIndex),
       };
     }
 
     case ADD_TASK: {
-      const targetBoardIndex = state.boardList.findIndex(x => x.boardId === action.payload.boardId);
+      const targetBoardIndex = state.boardList.findIndex(
+        x => x.boardId === action.payload.boardId);
       const targetBoard = state.boardList[targetBoardIndex];
       const targetColumnIndex = targetBoard.boardColumns.findIndex(
         value => value.columnId === action.payload.columnId
@@ -193,13 +198,16 @@ const boardList = (state = initialState, action: ActionType) => {
 
       return {
         ...state,
-        boardList: overrideItemAtIndex(state.boardList, updatedColumnList, targetBoardIndex),
+        boardList: overrideItemAtIndex(state.boardList,
+          updatedColumnList,
+          targetBoardIndex),
       };
     }
 
     case MOVE_COLUMN: {
       const { dragIndex, hoverIndex, boardId } = action.payload;
-      const targetBoardIndex = state.boardList.findIndex(x => x.boardId === boardId);
+      const targetBoardIndex = state.boardList.findIndex(
+        x => x.boardId === boardId);
       const targetBoard = state.boardList[targetBoardIndex];
 
       const updateBoard = {
@@ -213,59 +221,87 @@ const boardList = (state = initialState, action: ActionType) => {
       };
     }
 
-    case MOVE_TASK: {
-      const { dragIndex, hoverIndex, sourceColumn, targetColumn, boardId } = action.payload;
-
+    case MOVE_TASK: {  
+      const { 
+        dragIndex,
+        hoverIndex,
+        sourceColumn,
+        targetColumn,
+        boardId,
+      } = action.payload;
+      // console.log(action.payload);
+      
       const targetBoardIndex = state.boardList.findIndex(x => x.boardId === boardId);
       const targetBoard = state.boardList[targetBoardIndex];
 
-      const sourceListIndex = targetBoard.boardColumns.findIndex(x => x.columnId === sourceColumn);
+      const sourceColumnIndex = targetBoard.boardColumns.findIndex(
+        x => x.columnId === sourceColumn);
 
-      const targetListIndex = targetBoard.boardColumns.findIndex(x => x.columnId === targetColumn);
+      const targetColumnIndex = targetBoard.boardColumns.findIndex(
+        x => x.columnId === targetColumn);
 
-      // const targetListIndex = findItemIndexById(state.lists, targetColumn);
-
-      const sourceList = targetBoard.boardColumns[sourceListIndex];
+      const sourceList = targetBoard.boardColumns[sourceColumnIndex];
 
       const task = sourceList.columnTasks[dragIndex];
 
-      const updatedSourceList = {
+      const updatedSourceColumn = {
         ...sourceList,
-        tasks: removeItemAtIndex(sourceList.columnTasks, dragIndex),
+        columnTasks: removeItemAtIndex(sourceList.columnTasks, dragIndex),
       };
 
       const stateWithUpdatedSourceList = {
-        ...state,
-        lists: overrideItemAtIndex(targetBoard.boardColumns, updatedSourceList, sourceListIndex),
+        ...targetBoard,
+        boardColumns: overrideItemAtIndex(
+          targetBoard.boardColumns, 
+          updatedSourceColumn, 
+          sourceColumnIndex),
       };
 
-      const targetList = stateWithUpdatedSourceList.lists[targetListIndex];
+      const targetList = stateWithUpdatedSourceList.boardColumns[targetColumnIndex];
 
       const updatedTargetList = {
         ...targetList,
-        tasks: insertItemAtIndex(targetList.columnTasks, task, hoverIndex),
+        columnTasks: insertItemAtIndex(targetList.columnTasks, task, hoverIndex),
+      };
+
+      const updateBoard = {
+        ...stateWithUpdatedSourceList,
+        boardColumns: overrideItemAtIndex(
+          stateWithUpdatedSourceList.boardColumns,
+          updatedTargetList,
+          targetColumnIndex
+        ),
       };
 
       return {
-        ...stateWithUpdatedSourceList,
-        lists: overrideItemAtIndex(
-          stateWithUpdatedSourceList.lists,
-          updatedTargetList,
-          targetListIndex
+        ...state,
+        boardList: overrideItemAtIndex(
+          state.boardList,
+          updateBoard,
+          targetBoardIndex
         ),
       };
+      // return state;
     }
 
     case SET_DRAGGED_ITEM: {
-      // const targetBoardIndex = state.boardList.findIndex(x => x.boardId === action.payload.boardId);
-      // const targetBoard = state.boardList[targetBoardIndex];
+      const targetBoardIndex = state.boardList.findIndex(
+        x => x.boardId === action.payload.boardId);
+      const targetBoard = state.boardList[targetBoardIndex];
 
-      // const updateBoard = {
-      //   ...targetBoard,
-      //   draggedItem: action.payload.DragItem,
-      // };
+      const updateBoard = {
+        ...targetBoard,
+        draggedItem: action.payload.Drag,
+      };
 
-      return state;
+      return { 
+        ...state,
+        boardList: overrideItemAtIndex(
+          state.boardList,
+          updateBoard,
+          targetBoardIndex
+        ),
+      };
     }
 
     default:
