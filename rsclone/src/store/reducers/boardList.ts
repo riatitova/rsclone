@@ -16,7 +16,7 @@ import {
   insertItemAtIndex,
 } from '@/utils/arrayUtils';
 
-const getInitialState = (name = 'start Board') => ({
+const getInitialState = (name = 'Board') => ({
   boardList: [
     {
       boardId: nanoid(),
@@ -111,8 +111,8 @@ const getInitialState = (name = 'start Board') => ({
   ],
 });
 
-const getNewState = (name: string, boardId: string) => ({
-  boardId,
+const getNewBoard = (name: string, boardId: string) => ({
+  boardId: boardId,
   boardName: name,
   draggedItem: undefined,
   boardColumns: [
@@ -136,7 +136,7 @@ const boardList = (state = initialState, action: ActionType) => {
     case ADD_BOARD:
       return {
         ...state,
-        boardList: [...state.boardList, getNewState(action.payload.text || '', nanoid())],
+        boardList: [...state.boardList, getNewBoard(action.payload.text || '', nanoid())],
       };
     case ADD_COLUMN: {
       const targetBoardIndex = state.boardList.findIndex(x => x.boardId === action.payload.boardId);

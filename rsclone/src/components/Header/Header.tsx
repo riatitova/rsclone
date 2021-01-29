@@ -8,6 +8,7 @@ import styles from '@/components/icons/BaseIcon/BaseIcon.scss';
 import HomeHeaderIcon from '@/components/icons/Home';
 
 import useOnClickOutside from './hook';
+import {Link} from "react-router-dom";
 // import { IMenuToggle } from '@/constants';
 
 function Header() {
@@ -25,11 +26,13 @@ function Header() {
           <Burger open={open} setOpen={setOpen} />
           <Menu open={open} />
         </div>
+
         <div className={style.header__icon}>
-          <a className={style.header__link} href="https://rs.school/js/">
+          <Link to="/" className={style.header__link}>
             <HomeHeaderIcon className={styles.size_sm} />
-          </a>
+          </Link>
         </div>
+
         <Search />
       </div>
 
@@ -37,7 +40,7 @@ function Header() {
         <h1 className={style.header__title}>Trello 2.0</h1>
       </div>
       <div className={style.header__button_wrapper}>
-        <button type="button" className={style.header__button}>Your boards</button>
+        <Link to="/boardList" className={style.header__button}>Your boards</Link>
       </div>
     </header>
   );

@@ -3,9 +3,11 @@ import { connect } from 'react-redux';
 import { BrowserRouter as Router, Switch, Route, Link, useRouteMatch } from 'react-router-dom';
 
 import Board from '@/components/Board';
-import { IBoardList } from '@/constants/index';
+import { IBoardList } from '@/constants';
 import { addBoard } from '@/store/actions/actions';
 import { RootState } from '@/store/reducers/rootReducer';
+import StyledBoardList, { StyledAddBoardBlock, StyledBoardInputWrapper } from './BoardList.styled';
+// import style from './BoardList.scss'
 
 interface DispatchProps {
   onAddBoard: (num: string) => void;
@@ -27,30 +29,39 @@ const BoardList = (props: Props) => {
   };
 
   return (
-    <div>
-      <button
-        type="button"
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-        onClick={props.onAddBoard.bind(this, boardName)}
-      >
-        new board redux
-      </button>
-      <input type="text" value={boardName} onChange={changeName} />
-      <Router>
-        {props.boards?.map(value => (
-          <Link key={value.boardId} to={`${match.url}/board_${value.boardId}`}>
-            {value.boardName}
-          </Link>
-        ))}
-        <Switch>
+    <StyledBoardList>
+        <Router>
           {props.boards?.map(value => (
-            <Route key={value.boardId} path={`${match.url}/board_${value.boardId}`}>
-              <Board boardID={value.boardId} />
-            </Route>
+            <Link key={value.boardId} to={`${match.url}/board_${value.boardId}`}>
+              {value.boardName}
+            </Link>
           ))}
-        </Switch>
-      </Router>
-    </div>
+          <Switch>
+            {props.boards?.map(value => (
+              <Route key={value.boardId} path={`${match.url}/board_${value.boardId}`}>
+                <Board boardID={value.boardId} />
+              </Route>
+            ))}
+          </Switch>
+        </Router>
+        <StyledAddBoardBlock>
+          Add board
+          <StyledBoardInputWrapper>
+            <input
+              className="input"
+              type="text"
+              placeholder="Enter board title.."
+              value={boardName}
+              onChange={changeName}/>
+            <button
+              onClick={props.onAddBoard.bind(this, boardName)}
+            >
+              +
+            </button>
+          </StyledBoardInputWrapper>
+
+        </StyledAddBoardBlock>
+    </StyledBoardList>
   );
 };
 
