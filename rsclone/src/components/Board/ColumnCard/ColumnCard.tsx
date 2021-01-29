@@ -1,10 +1,12 @@
-import React, { useRef } from 'react';
+import React, { useRef, Dispatch } from 'react';
 import { useDrop, useDrag } from 'react-dnd';
 import { connect } from 'react-redux';
 
 import { CardContainer } from '@/assets/stylesheets/styles';
 import { DragItem } from '@/components/context/DragItem';
-import { setDraggeditem } from '@/store/actions/actions';
+import { IBoardList } from '@/constants/index';
+import { setDraggeditem, moveTask } from '@/store/actions/actions';
+import { RootState } from '@/store/reducers/rootReducer';
 
 interface ColumnProps {
   text: string;
@@ -16,13 +18,13 @@ interface ColumnProps {
 }
 
 interface DispatchProps {
-  // onMoveTask: (
-  //   dragIndex: number,
-  //   hoverIndex: number,
-  //   sourceColumn: string,
-  //   targetColumn: string,
-  //   boardId: string
-  // ) => void;
+  onMoveTask: (
+    dragIndex: number,
+    hoverIndex: number,
+    sourceColumn: string,
+    targetColumn: string,
+    boardId: string
+  ) => void;
   onSetDraggedItem: (boardId: string, Drag: DragItem | undefined ) => void;  
 }
 
@@ -34,7 +36,12 @@ interface HoverDrag {
   };
 }
 
-type Props = ColumnProps & DispatchProps;
+interface StateProps {
+  // eslint-disable-next-line react/no-unused-prop-types
+  board: IBoardList[];
+}
+
+type Props = StateProps & ColumnProps & DispatchProps;
 
 const ColumnCard = (props: Props) => {
   const ref = useRef<HTMLDivElement>(null);
@@ -47,24 +54,16 @@ const ColumnCard = (props: Props) => {
       const newItem: DragItem | undefined = item.payload.Drag;
       
       if (newItem?.type === 'CARD') {
-        // console.log(newItem);
-        // if (newItem.cardId === props.taskId) {
+        if (newItem.cardId !== props.taskId) {
+          const dragIndex = newItem.cardIndex;
+          const hoverIndex = props.taskIndex;
+          const sourceColumn = newItem.columnId;
+          const targetColumn = props.columnId;
           
-        // }
-        // const dragIndex = newItem.cardIndex;
-        // const hoverIndex = props.taskIndex;
-        // const sourceColumn = newItem.columnId;
-        // const targetColumn = props.columnId;
-
-        // // dispatch({
-        // //   type: 'MOVE_TASK',
-        // //   payload: { dragIndex, hoverIndex, sourceColumn, targetColumn },
-        // // });
-        // console.log(dragIndex, hoverIndex, sourceColumn, targetColumn );
-        
-        // props.onMoveTask(dragIndex, hoverIndex, sourceColumn, targetColumn, props.boardId);
-        // newItem.cardIndex = hoverIndex;
-        // newItem.columnId = targetColumn;
+          props.onMoveTask(dragIndex, hoverIndex, sourceColumn, targetColumn, props.boardId);
+          newItem.cardIndex = hoverIndex;
+          newItem.columnId = targetColumn;
+        }
       }
     },
   });
@@ -97,12 +96,23 @@ const ColumnCard = (props: Props) => {
   );
 };
 
-const mapDispatchToProps = () => ({
-  // onMoveTask: (dragIndex: number, hoverIndex: number, sourceColumn: string,
-  // 	 targetColumn: string, boardId: string) =>
-  //   dispatch(moveTask({dragIndex, hoverIndex, sourceColumn, targetColumn, boardId})),
+const mapStateToProps = (state: RootState) => {
+  const boardList: IBoardList[] = state.boardList?.boardList;
+  return {
+    board: boardList,
+  };
+};
+
+const mapDispatchToProps = (dispatch: Dispatch<any>) => ({
+  onMoveTask: (
+    dragIndex: number,
+    hoverIndex: number,
+    sourceColumn: string,
+    targetColumn: string,
+    boardId: string
+  ) => dispatch(moveTask({ dragIndex, hoverIndex, sourceColumn, targetColumn, boardId })),
   onSetDraggedItem: (boardId: string, Drag: DragItem | undefined ) =>
-    (setDraggeditem({boardId, Drag})),
+    dispatch(setDraggeditem({boardId, Drag})),
 });
 
-export default connect<DispatchProps, ColumnProps>(mapDispatchToProps)(ColumnCard);
+export default connect<StateProps, DispatchProps, ColumnProps>(mapStateToProps, mapDispatchToProps)(ColumnCard);
