@@ -1,17 +1,63 @@
-.card__menu {
-  display: none;
-  &_visible {
+@import "@/assets/stylesheets/index.scss";
+
+.card {
+  &__menu {
+    display: none;
+    &_visible {
+      padding-left: 2rem;
+      padding-bottom: 2rem;
+      border-radius: 3%;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      flex-direction: column;
+      position: absolute;
+      left: 25%;
+      right: 25%;
+      top: 25%;
+      bottom: 25%;
+      margin: auto;
+      background: white;
+    }
+  }
+  &__buttons {
+    width: 100%;
     display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    flex-direction: column;
-    position: absolute;
-    left: 25%;
-    right: 25%;
-    top: 25%;
-    bottom: 25%;
-    margin: auto;
-    background: white;
+    align-items: center;
+    justify-content: space-around;
+  }
+  &__button {
+    width: 8rem;
+    height: 2.5rem;
+    border-radius: 1rem;
+    border: none;
+    outline: none;
+    font-weight: 600;
+    color: $color-white;
+    background-color: $color-blue-button;
+    text-transform: uppercase;
+    text-align: center;
+    box-shadow: 0.3rem 0.3rem 1rem 0 rgba(0, 0, 0, 0.1);
+
+    &:hover {
+      cursor: pointer;
+      color: $color-blue-button;
+      background-color: $color-white;
+      box-shadow: 0.5rem 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
+      transition: all 0.5s ease;
+    }
+
+    &:not(:hover) {
+      transition: all 0.5s ease;
+    }
+    &:active {
+      transform: translateY(4px);
+    }
+  }
+  &__description {
+    width: 20rem;
+    height: 5rem;
+    resize: none;
   }
 }
 
@@ -24,5 +70,5 @@
   right: 0;
   bottom: 0;
   margin: auto;
-  background-color: rgba(0,0,0, 0.5);
+  background-color: rgba(0, 0, 0, 0.5);
 }

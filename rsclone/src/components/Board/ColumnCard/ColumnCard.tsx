@@ -78,10 +78,10 @@ const ColumnCard = (props: Props) => {
         <CardMenu
           text={props.text}
           isVisible
+          closePopup={togglePopup}
         />
       )
         : null}
-      {/* <CardMenu text={props.text} isVisible={false}/> */}
     </CardContainer>
   
   );
