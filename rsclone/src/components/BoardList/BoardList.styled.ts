@@ -3,10 +3,11 @@ import styled from 'styled-components';
 export const StyledBoardList = styled.div`
   display: flex;
   flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap: wrap;
   // width: 100vw;
   height: auto;
   color: #000;
-  justify-content: space-between;
 `;
 
 export const StyledAddBoardBlock = styled.div`

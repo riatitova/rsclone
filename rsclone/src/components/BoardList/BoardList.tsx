@@ -1,5 +1,5 @@
-import React, { Dispatch, useState } from 'react';
-import { connect } from 'react-redux';
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { BrowserRouter as Router, Switch, Route, Link, useRouteMatch } from 'react-router-dom';
 
 import Board from '@/components/Board';
@@ -12,19 +12,11 @@ import { StyledBoardList,
   StyledBoardInputWrapper,
   StyledBoardLink,
 } from './BoardList.styled';
-// import style from './BoardList.scss'
 
-interface DispatchProps {
-  onAddBoard: (num: string) => void;
-}
+const BoardList = () => {
+  const dispatch = useDispatch();
+  const boards: IBoardList[] = useSelector((state: RootState) => state.boardList?.boardList);
 
-interface StateProps {
-  boards: IBoardList[] | undefined;
-}
-
-type Props = StateProps & DispatchProps;
-
-const BoardList = (props: Props) => {
   const match = useRouteMatch();
 
   const [boardName, setBoardName] = useState('');
@@ -33,10 +25,15 @@ const BoardList = (props: Props) => {
     setBoardName(event.currentTarget.value);
   };
 
+  const onAddBoard = (str: string) => {
+    dispatch(addBoard({ text: str }));
+    setBoardName('');
+  };
+
   return (
     <StyledBoardList>
       <Router>
-        {props.boards?.map(value => (
+        {boards?.map(value => (
           <StyledBoardLink key={value.boardId}>
             <Link key={value.boardId} to={`${match.url}/board_${value.boardId}`}>
               {value.boardName}
@@ -53,7 +50,7 @@ const BoardList = (props: Props) => {
               ))}
             </Route>*/}
 
-          {props.boards?.map(value => (
+          {boards?.map(value => (
             <Route key={value.boardId} path={`${match.url}/board_${value.boardId}`}>
               <Board boardID={value.boardId} />
             </Route>
@@ -73,7 +70,7 @@ const BoardList = (props: Props) => {
           <button
             type='submit'
             // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-            onClick={props.onAddBoard.bind(this, boardName)}
+            onClick={onAddBoard.bind(this, boardName)}
           >
             +
           </button>
@@ -83,15 +80,4 @@ const BoardList = (props: Props) => {
   );
 };
 
-const mapStateToProps = (state: RootState) => {
-  const boardList: IBoardList[] = state.boardList?.boardList;
-  return {
-    boards: boardList,
-  };
-};
-
-const mapDispatchToProps = (dispatch: Dispatch<any>) => ({
-  onAddBoard: (str: string) => dispatch(addBoard({ text: str })),
-});
-
-export default connect<StateProps, DispatchProps>(mapStateToProps, mapDispatchToProps)(BoardList);
+export default BoardList;
