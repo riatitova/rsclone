@@ -4,7 +4,6 @@ import style from '@/components/Board/ColumnCard/CardMenu/CardMenu.scss';
 
 interface CardMenuProps {
   text: string;
-  isVisible: boolean;
   closePopup: () => void;
   
   // taskId: string;
@@ -15,9 +14,9 @@ type Props = CardMenuProps;
 
 const CardMenu: React.FC<Props> = (props: Props) => (
   <div className={style.popup}>
-    <div className={props.isVisible ? style.card__menu_visible : style.card__menu}>
+    <div className={style.card__menu_visible}>
       <h3 className={style.card__name}>
-        Current task:
+        Current task: 
         {props.text}
       </h3>
       <div>

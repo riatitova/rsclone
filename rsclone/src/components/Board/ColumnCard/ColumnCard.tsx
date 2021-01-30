@@ -77,7 +77,6 @@ const ColumnCard = (props: Props) => {
       {showPopup ? (
         <CardMenu
           text={props.text}
-          isVisible
           closePopup={togglePopup}
         />
       )
