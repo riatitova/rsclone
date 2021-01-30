@@ -24,15 +24,17 @@ export const FooterContainer = styled(HeaderContainer)`
 `;
 
 export const AppContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
+  // display: flex;
+  // flex-direction: row;
+  // align-items: flex-start;
   // width: 100vw;
   min-height: 100%;
   padding: 1rem;
   // background-color: #FBFAFA;
+/*
   overflow-x: auto;
   overflow-y: auto;
+*/
 
   &::-webkit-scrollbar-track {
     box-shadow: inset 0 0 6px #e5e5e5;
