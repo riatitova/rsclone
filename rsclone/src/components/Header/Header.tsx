@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react';
+import { Link } from 'react-router-dom';
 
 import Burger from '@/components/Burger/Burger';
 import style from '@/components/Header/Header.scss';
@@ -11,7 +12,6 @@ import useOnClickOutside from './hook';
 // import { IMenuToggle } from '@/constants';
 
 function Header() {
-
   const [open, setOpen] = useState<boolean>(false);
   const node = useRef<HTMLDivElement>(null);
 
@@ -19,17 +19,18 @@ function Header() {
 
   return (
     <header className={style.header}>
-
       <div className={style.header__icons_wrapper}>
         <div ref={node}>
           <Burger open={open} setOpen={setOpen} />
           <Menu open={open} />
         </div>
+
         <div className={style.header__icon}>
-          <a className={style.header__link} href="https://rs.school/js/">
+          <Link to="/" className={style.header__link}>
             <HomeHeaderIcon className={styles.size_sm} />
-          </a>
+          </Link>
         </div>
+
         <Search />
       </div>
 
@@ -37,7 +38,9 @@ function Header() {
         <h1 className={style.header__title}>Trello 2.0</h1>
       </div>
       <div className={style.header__button_wrapper}>
-        <button type="button" className={style.header__button}>Your boards</button>
+        <Link to="/boardList" className={style.header__button}>
+          Your boards
+        </Link>
       </div>
     </header>
   );

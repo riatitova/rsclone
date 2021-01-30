@@ -1,23 +1,22 @@
-import React, { Dispatch, useState } from 'react';
-import { connect } from 'react-redux';
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { BrowserRouter as Router, Switch, Route, Link, useRouteMatch } from 'react-router-dom';
 
 import Board from '@/components/Board';
-import { IBoardList } from '@/constants/index';
+import { IBoardList } from '@/constants';
 import { addBoard } from '@/store/actions/actions';
 import { RootState } from '@/store/reducers/rootReducer';
 
-interface DispatchProps {
-  onAddBoard: (num: string) => void;
-}
+import { StyledBoardList,
+  StyledAddBoardBlock,
+  StyledBoardInputWrapper,
+  StyledBoardLink,
+} from './BoardList.styled';
 
-interface StateProps {
-  boards: IBoardList[] | undefined;
-}
+const BoardList = () => {
+  const dispatch = useDispatch();
+  const boards: IBoardList[] = useSelector((state: RootState) => state.boardList?.boardList);
 
-type Props = StateProps & DispatchProps;
-
-const BoardList = (props: Props) => {
   const match = useRouteMatch();
 
   const [boardName, setBoardName] = useState('');
@@ -26,43 +25,59 @@ const BoardList = (props: Props) => {
     setBoardName(event.currentTarget.value);
   };
 
+  const onAddBoard = (str: string) => {
+    dispatch(addBoard({ text: str }));
+    setBoardName('');
+  };
+
   return (
-    <div>
-      <button
-        type="button"
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-        onClick={props.onAddBoard.bind(this, boardName)}
-      >
-        new board redux
-      </button>
-      <input type="text" value={boardName} onChange={changeName} />
+    <StyledBoardList>
       <Router>
-        {props.boards?.map(value => (
-          <Link key={value.boardId} to={`${match.url}/board_${value.boardId}`}>
-            {value.boardName}
-          </Link>
+        {boards?.map(value => (
+          <StyledBoardLink key={value.boardId}>
+            <Link key={value.boardId} to={`${match.url}/board_${value.boardId}`}>
+              {value.boardName}
+            </Link>
+          </StyledBoardLink>
         ))}
+
         <Switch>
-          {props.boards?.map(value => (
+          {/*  <Route path={`${match.url}/boardList`}>
+              {props.boards?.map(value => (
+                <Link key={value.boardId} to={`${match.url}/board_${value.boardId}`}>
+                  {value.boardName}
+                </Link>
+              ))}
+            </Route>*/}
+
+          {boards?.map(value => (
             <Route key={value.boardId} path={`${match.url}/board_${value.boardId}`}>
               <Board boardID={value.boardId} />
             </Route>
           ))}
         </Switch>
       </Router>
-    </div>
+      <StyledAddBoardBlock>
+        Add board
+        <StyledBoardInputWrapper>
+          <input
+            className="input"
+            type="text"
+            placeholder="Enter board title.."
+            value={boardName}
+            onChange={changeName}
+          />
+          <button
+            type='submit'
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+            onClick={onAddBoard.bind(this, boardName)}
+          >
+            +
+          </button>
+        </StyledBoardInputWrapper>
+      </StyledAddBoardBlock>
+    </StyledBoardList>
   );
 };
 
-const mapStateToProps = (state: RootState) => {
-  const boardList: IBoardList[] = state.boardList?.boardList;
-  return {
-    boards: boardList,
-  };
-};
-
-const mapDispatchToProps = (dispatch: Dispatch<any>) => ({
-  onAddBoard: (str: string) => dispatch(addBoard({ text: str })),
-});
-
-export default connect<StateProps, DispatchProps>(mapStateToProps, mapDispatchToProps)(BoardList);
+export default BoardList;

@@ -3,25 +3,55 @@ import styled from 'styled-components';
 export const PageContainer = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  height: 100vh;
+  // justify-content: space-between;
+  // height: 100vh;
 `;
 
-export const SmallContainer = styled.div`
+export const HeaderContainer = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
   background-color: #fff;
-  width: 100vw;
+  //width: 100vw;
+`;
+
+export const FooterContainer = styled(HeaderContainer)`
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
 `;
 
 export const AppContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  background-color: #3179ba;
-  padding: 20px;
-  width: 100vw;
+  // display: flex;
+  // flex-direction: row;
+  // align-items: flex-start;
+  // width: 100vw;
+  min-height: 100%;
+  padding: 1rem;
+  // background-color: #FBFAFA;
+/*
+  overflow-x: auto;
+  overflow-y: auto;
+*/
+
+  &::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px #e5e5e5;
+    border-radius: 0.3rem;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #fff;
+    outline: 1px solid #e4e4e4;
+    border-radius: 0.3rem;
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: #e4e4e4;
+    outline: 1px solid #e5e5e5;
+  }
+  &::-webkit-scrollbar {
+    height: 0.6rem;
+  }
 `;
 
 interface DragPreviewContainerProps {
