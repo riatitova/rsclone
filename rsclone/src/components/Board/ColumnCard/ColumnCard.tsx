@@ -1,14 +1,15 @@
-import React, { useRef, Dispatch } from 'react';
+import React, { useRef, Dispatch, useState } from 'react';
 import { useDrop, useDrag } from 'react-dnd';
 import { connect } from 'react-redux';
 
 import { CardContainer } from '@/assets/stylesheets/styles';
 import { DragItem } from '@/components/context/DragItem';
+import styles from '@/components/icons/BaseIcon/BaseIcon.scss';
+import CardMenuIcon from '@/components/icons/CardMenuIcon';
 import { IBoardList } from '@/constants/index';
 import { setDraggeditem, moveTask } from '@/store/actions/actions';
 import { RootState } from '@/store/reducers/rootReducer';
-import styles from '@/components/icons/BaseIcon/BaseIcon.scss';
-import CardMenuIcon from '@/components/icons/CardMenuIcon';
+
 import CardMenu from './CardMenu';
 
 interface ColumnProps {
@@ -28,7 +29,7 @@ interface DispatchProps {
     targetColumn: string,
     boardId: string
   ) => void;
-  onSetDraggedItem: (boardId: string, Drag: DragItem | undefined ) => void;  
+  onSetDraggedItem: (boardId: string, Drag: DragItem | undefined) => void;
 }
 
 interface HoverDrag {
@@ -47,30 +48,27 @@ interface StateProps {
 type Props = StateProps & ColumnProps & DispatchProps;
 
 const ColumnCard = (props: Props) => {
-
   const [showPopup, setShowPopup] = useState(false);
   function togglePopup() {
     setShowPopup(!showPopup);
   }
 
-  return (
   const ref = useRef<HTMLDivElement>(null);
-
 
   const [, drop] = useDrop({
     accept: 'CARD',
     hover(item: HoverDrag) {
       // console.log(item);
-      
+
       const newItem: DragItem | undefined = item.payload.Drag;
-      
+
       if (newItem?.type === 'CARD') {
         if (newItem.cardId !== props.taskId) {
           const dragIndex = newItem.cardIndex;
           const hoverIndex = props.taskIndex;
           const sourceColumn = newItem.columnId;
           const targetColumn = props.columnId;
-          
+
           props.onMoveTask(dragIndex, hoverIndex, sourceColumn, targetColumn, props.boardId);
           newItem.cardIndex = hoverIndex;
           newItem.columnId = targetColumn;
@@ -79,7 +77,7 @@ const ColumnCard = (props: Props) => {
     },
   });
 
-  const item: DragItem =  {
+  const item: DragItem = {
     boardId: props.boardId,
     cardIndex: props.taskIndex,
     cardId: props.taskId,
@@ -96,21 +94,11 @@ const ColumnCard = (props: Props) => {
 
   drag(drop(ref));
 
-  return ( 
-    <CardContainer
-      isPreview={props.isPreview}
-      isHidden={false}
-      ref={ref}
-    >
+  return (
+    <CardContainer isPreview={props.isPreview} isHidden={false} ref={ref}>
       {props.text}
-       <CardMenuIcon className={styles.size_xs} onClick={togglePopup} />
-      {showPopup ? (
-        <CardMenu
-          text={props.text}
-          closePopup={togglePopup}
-        />
-      )
-        : null}
+      <CardMenuIcon className={styles.size_xs} onClick={togglePopup} />
+      {showPopup ? <CardMenu text={props.text} closePopup={togglePopup} /> : null}
     </CardContainer>
   );
 };
@@ -130,7 +118,10 @@ const mapDispatchToProps = (dispatch: Dispatch<any>) => ({
     targetColumn: string,
     boardId: string
   ) => dispatch(moveTask({ dragIndex, hoverIndex, sourceColumn, targetColumn, boardId })),
-  onSetDraggedItem: (boardId: string, Drag: DragItem | undefined ) =>
-    dispatch(setDraggeditem({boardId, Drag})),
+  onSetDraggedItem: (boardId: string, Drag: DragItem | undefined) =>
+    dispatch(setDraggeditem({ boardId, Drag })),
 });
-export default connect<StateProps, DispatchProps, ColumnProps>(mapStateToProps, mapDispatchToProps)(ColumnCard);
+export default connect<StateProps, DispatchProps, ColumnProps>(
+  mapStateToProps,
+  mapDispatchToProps
+)(ColumnCard);
