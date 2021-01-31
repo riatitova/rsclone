@@ -5,7 +5,7 @@ import style from '@/components/Board/ColumnCard/CardMenu/CardMenu.scss';
 interface CardMenuProps {
   text: string;
   closePopup: () => void;
-  
+
   // taskId: string;
   // columnId: string;
 }
@@ -16,7 +16,7 @@ const CardMenu: React.FC<Props> = (props: Props) => (
   <div className={style.popup}>
     <div className={style.card__menu_visible}>
       <h3 className={style.card__name}>
-        Current task: 
+        Current task:
         {props.text}
       </h3>
       <div>

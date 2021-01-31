@@ -31,7 +31,7 @@ export const AppContainer = styled.div`
   min-height: 100%;
   padding: 1rem;
   // background-color: #FBFAFA;
-/*
+  /*
   overflow-x: auto;
   overflow-y: auto;
 */
