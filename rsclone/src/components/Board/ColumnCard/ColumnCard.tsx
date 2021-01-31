@@ -7,6 +7,9 @@ import { DragItem } from '@/components/context/DragItem';
 import { IBoardList } from '@/constants/index';
 import { setDraggeditem, moveTask } from '@/store/actions/actions';
 import { RootState } from '@/store/reducers/rootReducer';
+import styles from '@/components/icons/BaseIcon/BaseIcon.scss';
+import CardMenuIcon from '@/components/icons/CardMenuIcon';
+import CardMenu from './CardMenu';
 
 interface ColumnProps {
   text: string;
@@ -44,7 +47,15 @@ interface StateProps {
 type Props = StateProps & ColumnProps & DispatchProps;
 
 const ColumnCard = (props: Props) => {
+
+  const [showPopup, setShowPopup] = useState(false);
+  function togglePopup() {
+    setShowPopup(!showPopup);
+  }
+
+  return (
   const ref = useRef<HTMLDivElement>(null);
+
 
   const [, drop] = useDrop({
     accept: 'CARD',
@@ -92,6 +103,14 @@ const ColumnCard = (props: Props) => {
       ref={ref}
     >
       {props.text}
+       <CardMenuIcon className={styles.size_xs} onClick={togglePopup} />
+      {showPopup ? (
+        <CardMenu
+          text={props.text}
+          closePopup={togglePopup}
+        />
+      )
+        : null}
     </CardContainer>
   );
 };
@@ -114,5 +133,4 @@ const mapDispatchToProps = (dispatch: Dispatch<any>) => ({
   onSetDraggedItem: (boardId: string, Drag: DragItem | undefined ) =>
     dispatch(setDraggeditem({boardId, Drag})),
 });
-
 export default connect<StateProps, DispatchProps, ColumnProps>(mapStateToProps, mapDispatchToProps)(ColumnCard);

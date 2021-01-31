@@ -81,6 +81,9 @@ export const ColumnTitle = styled.div`
 `;
 
 export const CardContainer = styled(DragPreviewContainer)`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   background-color: #fff;
   cursor: pointer;
   margin-bottom: 0.5rem;
