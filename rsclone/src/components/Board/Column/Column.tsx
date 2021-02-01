@@ -6,15 +6,17 @@ import { ColumnContainer, ColumnTitle } from '@/assets/stylesheets/styles';
 import AddNewItem from '@/components/Board/AddNewItem';
 import ColumnCard from '@/components/Board/ColumnCard';
 import { DragItem } from '@/components/context/DragItem';
+import styles from '@/components/icons/BaseIcon/BaseIcon.scss';
+import CrossIcon from '@/components/icons/CrossIcon';
 import { IBoardList, IColumns } from '@/constants/index';
-import { moveColumn, moveTask, setDraggeditem } from '@/store/actions/actions';
+import { moveColumn, moveTask, setDraggeditem, deleteColumn } from '@/store/actions/actions';
 import { RootState } from '@/store/reducers/rootReducer';
 
 interface ColumnProps {
   boardId: string;
   text: string;
   index: number;
-  id: string;
+  columnId: string;
   isPreview?: boolean;
 }
 
@@ -29,6 +31,7 @@ interface DispatchProps {
     boardId: string
   ) => void;
   onSetDraggedItem: (boardId: string, Drag: DragItem | undefined) => void;
+  onDeleteColumn: (boardId: string, columnId: string) => void;
 }
 
 interface StateProps {
@@ -69,7 +72,7 @@ const BoardColumn = (props: Props) => {
         const dragIndex = newItem.cardIndex;
         const hoverIndex = 0;
         const sourceColumn = newItem.columnId;
-        const targetColumn = props.id;
+        const targetColumn = props.columnId;
 
         if (sourceColumn === targetColumn) {
           return;
@@ -86,7 +89,7 @@ const BoardColumn = (props: Props) => {
   const item: DragItem = {
     type: 'COLUMN',
     boardId: props.boardId,
-    columnId: props.id,
+    columnId: props.columnId,
     columnIndex: props.index,
     text: props.text,
   };
@@ -100,9 +103,14 @@ const BoardColumn = (props: Props) => {
   //   preview(getEmptyImage());
   // }, [preview]);
 
+  const deleteColumnFunc = () => {
+    props.onDeleteColumn(props.boardId, props.columnId);
+  };
+
   drag(drop(ref));
   return (
     <ColumnContainer isPreview={props.isPreview} ref={ref} isHidden={false}>
+      <CrossIcon className={styles.size_l} onClick={deleteColumnFunc} />
       <ColumnTitle>{props.text}</ColumnTitle>
       {targetBoardColumn.columnTasks.map((task, index) => (
         <ColumnCard
@@ -117,7 +125,7 @@ const BoardColumn = (props: Props) => {
       <AddNewItem
         toggleButtonText="+ Add another task"
         functionName="addTask"
-        columnId={props.id}
+        columnId={props.columnId}
         boardId={props.boardId}
         dark
       />
@@ -144,6 +152,8 @@ const mapDispatchToProps = (dispatch: Dispatch<any>) => ({
   ) => dispatch(moveTask({ dragIndex, hoverIndex, sourceColumn, targetColumn, boardId })),
   onSetDraggedItem: (boardId: string, Drag: DragItem | undefined) =>
     dispatch(setDraggeditem({ boardId, Drag })),
+  onDeleteColumn: (boardId: string, columnId: string) =>
+    dispatch(deleteColumn({ boardId, columnId })),
 });
 
 export default connect<StateProps, DispatchProps, ColumnProps>(
