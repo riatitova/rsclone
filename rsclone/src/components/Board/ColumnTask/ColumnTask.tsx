@@ -5,15 +5,17 @@ import { connect } from 'react-redux';
 import { CardContainer } from '@/assets/stylesheets/styles';
 import { DragItem } from '@/components/context/DragItem';
 import styles from '@/components/icons/BaseIcon/BaseIcon.scss';
-import CardMenuIcon from '@/components/icons/CardMenuIcon';
+import CardMenuIcon from '@/components/icons/TaskMenuIcon';
 import { IBoardList } from '@/constants/index';
 import { setDraggeditem, moveTask } from '@/store/actions/actions';
 import { RootState } from '@/store/reducers/rootReducer';
 
-import CardMenu from './CardMenu';
+import CardMenu from './TaskMenu';
 
 interface ColumnProps {
-  text: string;
+  taskText: string;
+  taskDate: Date;
+  taskName: string;
   taskIndex: number;
   taskId: string;
   columnId: string;
@@ -80,7 +82,7 @@ const ColumnCard = (props: Props) => {
     cardIndex: props.taskIndex,
     cardId: props.taskId,
     columnId: props.columnId,
-    text: props.text,
+    taskName: props.taskName,
     type: 'CARD',
   };
 
@@ -94,13 +96,15 @@ const ColumnCard = (props: Props) => {
 
   return (
     <CardContainer isPreview={props.isPreview} isHidden={false} ref={ref}>
-      {props.text}
+      {props.taskName}
       <CardMenuIcon className={styles.size_xs} onClick={togglePopup} />
       {showPopup ? (
         <CardMenu
-          text={props.text}
+          taskText={props.taskText}
+          taskDate={props.taskDate}
+          taskName={props.taskName}
           closePopup={togglePopup}
-          cardId={props.taskId}
+          taskId={props.taskId}
           columnId={props.columnId}
           boardId={props.boardId}
         />

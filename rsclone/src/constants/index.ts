@@ -1,5 +1,3 @@
-import { Dispatch } from 'react';
-
 import { DragItem } from '@/components/context/DragItem';
 import {
   ADD_BOARD,
@@ -8,20 +6,18 @@ import {
   ADD_COLUMN,
   SET_DRAGGED_ITEM,
   MOVE_TASK,
-  DELETE_CARD,
+  DELETE_TASK,
   DELETE_COLUMN,
   DELETE_BOARD,
+  CHANGE_TEXT,
 } from '@/store/actions/actionTypes';
 
 interface IState {
-  counter1?: IProps1;
-  boardList?: IProps2;
-  boards?: IBoards;
+  boardListReducer?: IBoardList;
 }
 
-interface IBoards {
-  boardList?: number;
-  onAddBoard?: Dispatch<number>;
+interface IBoardListState {
+  boardList?: IBoardList[];
 }
 
 interface IBoardList {
@@ -40,6 +36,8 @@ interface IColumns {
 interface IBoardTasks {
   taskId: string;
   taskName: string;
+  taskText: string;
+  taskDate: Date;
 }
 
 interface IPayload {
@@ -66,10 +64,10 @@ interface ISetDraggedItem {
   boardId: string;
 }
 
-interface IDeleteCard {
+interface IDeleteTask {
   boardId: string;
   columnId: string;
-  cardId: string;
+  taskId: string;
 }
 
 interface IDeleteColumn {
@@ -79,6 +77,13 @@ interface IDeleteColumn {
 
 interface IDeleteBoard {
   boardId: string;
+}
+
+interface IChangeText {
+  boardId: string;
+  columnId: string;
+  taskId: string;
+  text: string;
 }
 
 type ActionType =
@@ -114,11 +119,11 @@ type ActionType =
     };
   }
   | {
-    type: typeof DELETE_CARD;
+    type: typeof DELETE_TASK;
     payload: {
       boardId: string;
       columnId: string;
-      cardId: string;
+      taskId: string;
     };
   }
   | {
@@ -135,6 +140,15 @@ type ActionType =
     };
   }
   | {
+    type: typeof CHANGE_TEXT;
+    payload: {
+      text: string;
+      taskId: string;
+      boardId: string;
+      columnId: string;
+    };
+  }
+  | {
     type: typeof MOVE_TASK;
     payload: {
       boardId: string;
@@ -144,19 +158,6 @@ type ActionType =
       targetColumn: string;
     };
   };
-
-interface IProps1 {
-  counter?: number;
-  onAdd?: Dispatch<any>;
-  onSub?: Dispatch<any>;
-  onAddNum?: Dispatch<number>;
-  onAsyncAdd?: Dispatch<number>;
-}
-
-interface IProps2 {
-  boardList?: IBoardList[];
-  onAdd2?: Dispatch<string>;
-}
 
 interface IMenu {
   open: boolean;
@@ -168,9 +169,7 @@ interface IMenuToggle extends IMenu {
 
 export {
   IState,
-  IProps1,
-  IProps2,
-  IBoards,
+  IBoardListState,
   IBoardList,
   IColumns,
   IBoardTasks,
@@ -181,7 +180,8 @@ export {
   ISetDraggedItem,
   IMenu,
   IMenuToggle,
-  IDeleteCard,
+  IDeleteTask,
   IDeleteColumn,
   IDeleteBoard,
+  IChangeText,
 };
