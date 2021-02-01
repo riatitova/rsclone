@@ -1,5 +1,6 @@
-import React, { Dispatch, useRef } from 'react';
+import React, { Dispatch, useRef, useEffect } from 'react';
 import { useDrop, useDrag } from 'react-dnd';
+import { getEmptyImage } from 'react-dnd-html5-backend';
 import { connect } from 'react-redux';
 
 import { ColumnContainer, ColumnTitle } from '@/assets/stylesheets/styles';
@@ -11,6 +12,7 @@ import CrossIcon from '@/components/icons/CrossIcon';
 import { IBoardList, IColumns } from '@/constants/index';
 import { moveColumn, moveTask, setDraggeditem, deleteColumn } from '@/store/actions/actions';
 import { RootState } from '@/store/reducers/rootReducer';
+import isHidden from '@/utils/isHidden';
 
 interface ColumnProps {
   boardId: string;
@@ -21,7 +23,6 @@ interface ColumnProps {
 }
 
 interface DispatchProps {
-  // onAddBoard: (num: string) => void;
   onMoveColumn: (dragIndex: number, hoverIndex: number, boardId: string) => void;
   onMoveTask: (
     dragIndex: number,
@@ -94,14 +95,14 @@ const BoardColumn = (props: Props) => {
     columnName: props.columnName,
   };
 
-  const [, drag] = useDrag({
+  const [, drag, preview] = useDrag({
     item,
     begin: () => props.onSetDraggedItem(props.boardId, item),
     end: () => props.onSetDraggedItem(props.boardId, undefined),
   });
-  // useEffect(() => {
-  //   preview(getEmptyImage());
-  // }, [preview]);
+  useEffect(() => {
+    preview(getEmptyImage());
+  }, [preview]);
 
   const deleteColumnFunc = () => {
     props.onDeleteColumn(props.boardId, props.columnId);
@@ -109,7 +110,11 @@ const BoardColumn = (props: Props) => {
 
   drag(drop(ref));
   return (
-    <ColumnContainer isPreview={props.isPreview} ref={ref} isHidden={false}>
+    <ColumnContainer
+      isPreview={props.isPreview}
+      ref={ref}
+      isHidden={isHidden(props.isPreview, board.draggedItem, 'COLUMN', props.columnId)}
+    >
       <CrossIcon className={styles.size_l} onClick={deleteColumnFunc} />
       <ColumnTitle>{props.columnName}</ColumnTitle>
       {targetBoardColumn.columnTasks.map((task, index) => (
