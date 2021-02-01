@@ -9,6 +9,7 @@ import {
   SET_DRAGGED_ITEM,
   MOVE_TASK,
   DELETE_CARD,
+  DELETE_COLUMN,
 } from '@/store/actions/actionTypes';
 import {
   overrideItemAtIndex,
@@ -310,6 +311,24 @@ const boardList = (state = initialState, action: ActionType) => {
           updatedColumn,
           targetColumnIndex
         ),
+      };
+
+      return {
+        ...state,
+        boardList: overrideItemAtIndex(state.boardList, updatedBoard, targetBoardIndex),
+      };
+    }
+
+    case DELETE_COLUMN: {
+      const { columnId, boardId } = action.payload;
+
+      const targetBoardIndex = state.boardList.findIndex(x => x.boardId === boardId);
+      const targetBoard = state.boardList[targetBoardIndex];
+
+      const targetColumnIndex = targetBoard.boardColumns.findIndex(x => x.columnId === columnId);
+      const updatedBoard = {
+        ...targetBoard,
+        boardColumns: removeItemAtIndex(targetBoard.boardColumns, targetColumnIndex),
       };
 
       return {
