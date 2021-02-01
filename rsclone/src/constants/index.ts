@@ -8,6 +8,8 @@ import {
   ADD_COLUMN,
   SET_DRAGGED_ITEM,
   MOVE_TASK,
+  DELETE_CARD,
+  DELETE_COLUMN,
 } from '@/store/actions/actionTypes';
 
 interface IState {
@@ -63,6 +65,17 @@ interface ISetDraggedItem {
   boardId: string;
 }
 
+interface IDeleteCard {
+  boardId: string;
+  columnId: string;
+  cardId: string;
+}
+
+interface IDeleteColumn {
+  boardId: string;
+  columnId: string;
+}
+
 type ActionType =
   | {
     type: typeof ADD_BOARD;
@@ -93,6 +106,21 @@ type ActionType =
     payload: {
       Drag: DragItem | undefined;
       boardId: string;
+    };
+  }
+  | {
+    type: typeof DELETE_CARD;
+    payload: {
+      boardId: string;
+      columnId: string;
+      cardId: string;
+    };
+  }
+  | {
+    type: typeof DELETE_COLUMN;
+    payload: {
+      boardId: string;
+      columnId: string;
     };
   }
   | {
@@ -142,4 +170,6 @@ export {
   ISetDraggedItem,
   IMenu,
   IMenuToggle,
+  IDeleteCard,
+  IDeleteColumn,
 };

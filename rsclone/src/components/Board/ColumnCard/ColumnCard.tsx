@@ -58,8 +58,6 @@ const ColumnCard = (props: Props) => {
   const [, drop] = useDrop({
     accept: 'CARD',
     hover(item: HoverDrag) {
-      // console.log(item);
-
       const newItem: DragItem | undefined = item.payload.Drag;
 
       if (newItem?.type === 'CARD') {
@@ -98,7 +96,15 @@ const ColumnCard = (props: Props) => {
     <CardContainer isPreview={props.isPreview} isHidden={false} ref={ref}>
       {props.text}
       <CardMenuIcon className={styles.size_xs} onClick={togglePopup} />
-      {showPopup ? <CardMenu text={props.text} closePopup={togglePopup} /> : null}
+      {showPopup ? (
+        <CardMenu
+          text={props.text}
+          closePopup={togglePopup}
+          cardId={props.taskId}
+          columnId={props.columnId}
+          boardId={props.boardId}
+        />
+      ) : null}
     </CardContainer>
   );
 };
@@ -121,6 +127,7 @@ const mapDispatchToProps = (dispatch: Dispatch<any>) => ({
   onSetDraggedItem: (boardId: string, Drag: DragItem | undefined) =>
     dispatch(setDraggeditem({ boardId, Drag })),
 });
+
 export default connect<StateProps, DispatchProps, ColumnProps>(
   mapStateToProps,
   mapDispatchToProps

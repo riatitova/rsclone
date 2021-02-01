@@ -27,7 +27,7 @@ const Board = (props: Props) => {
       <CustomDragLayer />
       {columns.map((list: IColumns, index: number) => (
         <Column
-          id={list.columnId}
+          columnId={list.columnId}
           text={list.columnName}
           key={list.columnId}
           index={index}

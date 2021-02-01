@@ -1,6 +1,13 @@
 import { Dispatch } from 'react';
 
-import { IPayload, IMoveColumn, IMoveTask, ISetDraggedItem } from '@/constants/index';
+import {
+  IPayload,
+  IMoveColumn,
+  IMoveTask,
+  ISetDraggedItem,
+  IDeleteCard,
+  IDeleteColumn,
+} from '@/constants/index';
 import {
   ADD,
   SUB,
@@ -12,6 +19,8 @@ import {
   MOVE_COLUMN,
   MOVE_TASK,
   SET_DRAGGED_ITEM,
+  DELETE_CARD,
+  DELETE_COLUMN,
 } from '@/store/actions/actionTypes';
 
 function add() {
@@ -90,6 +99,20 @@ function setDraggeditem(obj: ISetDraggedItem) {
   };
 }
 
+function deleteCard(obj: IDeleteCard) {
+  return {
+    type: DELETE_CARD,
+    payload: obj,
+  };
+}
+
+function deleteColumn(obj: IDeleteColumn) {
+  return {
+    type: DELETE_COLUMN,
+    payload: obj,
+  };
+}
+
 export {
   add,
   sub,
@@ -102,4 +125,6 @@ export {
   moveColumn,
   moveTask,
   setDraggeditem,
+  deleteCard,
+  deleteColumn,
 };

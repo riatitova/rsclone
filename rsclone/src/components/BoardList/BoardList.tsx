@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useState, Dispatch } from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import { IBoardList } from '@/constants';
@@ -13,9 +13,18 @@ import {
   StyledBoardLink,
 } from './BoardList.styled';
 
-const BoardList = () => {
-  const dispatch = useDispatch();
-  const boards: IBoardList[] = useSelector((state: RootState) => state.boardList?.boardList);
+interface DispatchProps {
+  onAddBoard: (text: string) => void;
+}
+
+interface StateProps {
+  board: IBoardList[];
+}
+
+type Props = StateProps & DispatchProps;
+
+const BoardList = (props: Props) => {
+  const boards = props.board;
 
   const [boardName, setBoardName] = useState('');
 
@@ -23,8 +32,8 @@ const BoardList = () => {
     setBoardName(event.currentTarget.value);
   };
 
-  const onAddBoard = (str: string) => {
-    dispatch(addBoard({ text: str }));
+  const onAddBoardFunc = () => {
+    props.onAddBoard(boardName);
     setBoardName('');
   };
 
@@ -48,11 +57,7 @@ const BoardList = () => {
             value={boardName}
             onChange={changeName}
           />
-          <button
-            type="submit"
-            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-            onClick={onAddBoard.bind(this, boardName)}
-          >
+          <button type="submit" onClick={onAddBoardFunc}>
             +
           </button>
         </StyledBoardInputWrapper>
@@ -61,4 +66,15 @@ const BoardList = () => {
   );
 };
 
-export default BoardList;
+const mapStateToProps = (state: RootState) => {
+  const boardList: IBoardList[] = state.boardList?.boardList;
+  return {
+    board: boardList,
+  };
+};
+
+const mapDispatchToProps = (dispatch: Dispatch<any>) => ({
+  onAddBoard: (text: string) => dispatch(addBoard({ text })),
+});
+
+export default connect<StateProps, DispatchProps>(mapStateToProps, mapDispatchToProps)(BoardList);
