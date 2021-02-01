@@ -10,6 +10,7 @@ import {
   MOVE_TASK,
   DELETE_CARD,
   DELETE_COLUMN,
+  DELETE_BOARD,
 } from '@/store/actions/actionTypes';
 import {
   overrideItemAtIndex,
@@ -334,6 +335,16 @@ const boardList = (state = initialState, action: ActionType) => {
       return {
         ...state,
         boardList: overrideItemAtIndex(state.boardList, updatedBoard, targetBoardIndex),
+      };
+    }
+
+    case DELETE_BOARD: {
+      const { boardId } = action.payload;
+      const targetBoardIndex = state.boardList.findIndex(x => x.boardId === boardId);
+
+      return {
+        ...state,
+        boardList: removeItemAtIndex(state.boardList, targetBoardIndex),
       };
     }
 

@@ -10,6 +10,7 @@ import {
   MOVE_TASK,
   DELETE_CARD,
   DELETE_COLUMN,
+  DELETE_BOARD,
 } from '@/store/actions/actionTypes';
 
 interface IState {
@@ -76,6 +77,10 @@ interface IDeleteColumn {
   columnId: string;
 }
 
+interface IDeleteBoard {
+  boardId: string;
+}
+
 type ActionType =
   | {
     type: typeof ADD_BOARD;
@@ -121,6 +126,12 @@ type ActionType =
     payload: {
       boardId: string;
       columnId: string;
+    };
+  }
+  | {
+    type: typeof DELETE_BOARD;
+    payload: {
+      boardId: string;
     };
   }
   | {
@@ -172,4 +183,5 @@ export {
   IMenuToggle,
   IDeleteCard,
   IDeleteColumn,
+  IDeleteBoard,
 };

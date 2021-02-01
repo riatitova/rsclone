@@ -7,6 +7,7 @@ import {
   ISetDraggedItem,
   IDeleteCard,
   IDeleteColumn,
+  IDeleteBoard,
 } from '@/constants/index';
 import {
   ADD,
@@ -21,6 +22,7 @@ import {
   SET_DRAGGED_ITEM,
   DELETE_CARD,
   DELETE_COLUMN,
+  DELETE_BOARD,
 } from '@/store/actions/actionTypes';
 
 function add() {
@@ -113,6 +115,13 @@ function deleteColumn(obj: IDeleteColumn) {
   };
 }
 
+function deleteBoard(obj: IDeleteBoard) {
+  return {
+    type: DELETE_BOARD,
+    payload: obj,
+  };
+}
+
 export {
   add,
   sub,
@@ -127,4 +136,5 @@ export {
   setDraggeditem,
   deleteCard,
   deleteColumn,
+  deleteBoard,
 };

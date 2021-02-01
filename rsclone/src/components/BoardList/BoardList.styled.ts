@@ -27,6 +27,7 @@ export const StyledAddBoardBlock = styled.div`
 `;
 
 export const StyledBoardLink = styled(StyledAddBoardBlock)`
+  position: relative;
   padding: 0;
   line-height: 7rem;
   a {
