@@ -8,6 +8,39 @@ export const StyledBoardList = styled.div`
   // width: 100vw;
   height: auto;
   color: #000;
+ `;
+export const BlockWrapper = styled.div`
+  position: relative;
+  width: 10rem;
+  height: 7rem;
+  margin: 1rem;
+  padding: 0rem;
+  background-color: #fbfafa;
+  border: none;
+  border-radius: 7%;
+  text-align: center;
+   line-height: 7rem;
+  box-shadow: 0.2rem 0.2rem 1rem 0 rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  }
+  a {
+  display: block;
+  width: 10rem;
+  height: 7rem;
+  color: #000;
+  text-decoration: none;
+  color: #000;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  }
+`;
+
+export const CrossIconWrapper = styled.div`
+  position: absolute;
+  top: 0;
+  right: 0;
+ 
 `;
 
 export const StyledAddBoardBlock = styled.div`
@@ -15,7 +48,8 @@ export const StyledAddBoardBlock = styled.div`
   height: 7rem;
   margin: 1rem;
   padding: 0.5rem;
-  color: #06cafe;
+  color: #000;
+  // color: #06cafe;
   background-color: #fbfafa;
   font-size: 0.9rem;
   font-weight: 600;
@@ -23,17 +57,7 @@ export const StyledAddBoardBlock = styled.div`
   text-transform: uppercase;
   border: none;
   border-radius: 7%;
-  box-shadow: 0.5rem 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
-`;
-
-export const StyledBoardLink = styled(StyledAddBoardBlock)`
-  position: relative;
-  padding: 0;
-  line-height: 7rem;
-  a {
-    text-decoration: none;
-    color: #06cafe;
-  }
+  box-shadow: 0.2rem 0.2rem 1rem 0 rgba(0, 0, 0, 0.1);
 `;
 
 export const StyledBoardInputWrapper = styled.div`
@@ -51,10 +75,10 @@ export const StyledBoardInputWrapper = styled.div`
     border: none;
     border-radius: 2rem;
     outline: none;
-    box-shadow: 0.5rem 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 0.2rem 0.2rem 1rem 0 rgba(0, 0, 0, 0.1);
 
     &::placeholder {
-      color: #e3e3e3;
+      color: #e5e5e5;
     }
   }
 
@@ -63,7 +87,6 @@ export const StyledBoardInputWrapper = styled.div`
     right: 0;
     width: 2rem;
     height: 2rem;
-    background-color: #fbfafa;
     font-size: 1rem;
     font-weight: 600;
     text-align: center;
@@ -71,10 +94,14 @@ export const StyledBoardInputWrapper = styled.div`
     color: #fff;
     text-transform: uppercase;
     background-color: #06cafe;
+    background-color: #e5e5e5;
+
+    // background-color: #fbfafa;
+
     border: none;
     outline: none;
     border-radius: 1rem;
-    box-shadow: 0.3rem 0.3rem 1rem 0 rgba(0, 0, 0, 0.1);
+    // box-shadow: 0.3rem 0.3rem 1rem 0 rgba(0, 0, 0, 0.1);
 
     &:hover {
       cursor: pointer;

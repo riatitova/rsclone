@@ -12,7 +12,8 @@ import {
   StyledBoardList,
   StyledAddBoardBlock,
   StyledBoardInputWrapper,
-  StyledBoardLink,
+  BlockWrapper,
+  CrossIconWrapper,
 } from './BoardList.styled';
 
 interface DispatchProps {
@@ -47,12 +48,14 @@ const BoardList = (props: Props) => {
   return (
     <StyledBoardList>
       {boards?.map(value => (
-        <StyledBoardLink key={value.boardId}>
-          <CrossIcon className={styles.size_l} onClick={() => deleteBoardFunc(value.boardId)} />
+        <BlockWrapper key={value.boardId}>
+          <CrossIconWrapper>
+            <CrossIcon className={styles.size_l} onClick={() => deleteBoardFunc(value.boardId)} />
+          </CrossIconWrapper>
           <Link key={value.boardId} to={`/board_${value.boardId}`}>
             {value.boardName}
           </Link>
-        </StyledBoardLink>
+        </BlockWrapper>
       ))}
 
       <StyledAddBoardBlock>

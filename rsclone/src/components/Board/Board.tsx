@@ -35,7 +35,7 @@ const Board = (props: Props) => {
         />
       ))}
       <AddNewItem
-        toggleButtonText="+ Add another list"
+        toggleButtonText="+add new list"
         boardId={props.boardID}
         functionName="addColumn"
       />
