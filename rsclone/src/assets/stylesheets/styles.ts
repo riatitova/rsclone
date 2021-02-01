@@ -65,6 +65,7 @@ export const DragPreviewContainer = styled.div<DragPreviewContainerProps>`
 `;
 
 export const ColumnContainer = styled(DragPreviewContainer)`
+  position: relative;
   background-color: #ebecf0;
   width: 18.5rem;
   min-height: 40px;
