@@ -8,7 +8,7 @@ export const StyledBoardList = styled.div`
   // width: 100vw;
   height: auto;
   color: #000;
- `;
+`;
 export const BlockWrapper = styled.div`
   position: relative;
   width: 10rem;
@@ -40,7 +40,6 @@ export const CrossIconWrapper = styled.div`
   position: absolute;
   top: 0;
   right: 0;
- 
 `;
 
 export const StyledAddBoardBlock = styled.div`
