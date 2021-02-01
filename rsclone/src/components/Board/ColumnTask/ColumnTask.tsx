@@ -1,5 +1,6 @@
-import React, { useRef, Dispatch, useState } from 'react';
+import React, { useRef, Dispatch, useState, useEffect } from 'react';
 import { useDrop, useDrag } from 'react-dnd';
+import { getEmptyImage } from 'react-dnd-html5-backend';
 import { connect } from 'react-redux';
 
 import { CardContainer } from '@/assets/stylesheets/styles';
@@ -9,6 +10,7 @@ import CardMenuIcon from '@/components/icons/TaskMenuIcon';
 import { IBoardList } from '@/constants/index';
 import { setDraggeditem, moveTask } from '@/store/actions/actions';
 import { RootState } from '@/store/reducers/rootReducer';
+import isHidden from '@/utils/isHidden';
 
 import CardMenu from './TaskMenu';
 
@@ -43,13 +45,15 @@ interface HoverDrag {
 }
 
 interface StateProps {
-  // eslint-disable-next-line react/no-unused-prop-types
   board: IBoardList[];
 }
 
 type Props = StateProps & ColumnProps & DispatchProps;
 
 const ColumnCard = (props: Props) => {
+  const board: IBoardList = props.board.filter((x: IBoardList) => x.boardId === props.boardId)[0];
+  // console.log(board);
+
   const [showPopup, setShowPopup] = useState(false);
   function togglePopup() {
     setShowPopup(!showPopup);
@@ -86,16 +90,31 @@ const ColumnCard = (props: Props) => {
     type: 'CARD',
   };
 
-  const [, drag] = useDrag({
+  const [, setHidden] = useState(false);
+
+  const [, drag, preview] = useDrag({
     item,
-    begin: () => props.onSetDraggedItem(props.boardId, item),
-    end: () => props.onSetDraggedItem(props.boardId, undefined),
+    begin: () => {
+      setHidden(true);
+      return props.onSetDraggedItem(props.boardId, item);
+    },
+    end: () => {
+      setHidden(false);
+      return props.onSetDraggedItem(props.boardId, undefined);
+    },
   });
+  useEffect(() => {
+    preview(getEmptyImage());
+  }, [preview]);
 
   drag(drop(ref));
 
   return (
-    <CardContainer isPreview={props.isPreview} isHidden={false} ref={ref}>
+    <CardContainer
+      isPreview={props.isPreview}
+      isHidden={isHidden(props.isPreview, board.draggedItem, 'CARD', props.taskId)}
+      ref={ref}
+    >
       {props.taskName}
       <CardMenuIcon className={styles.size_xs} onClick={togglePopup} />
       {showPopup ? (
