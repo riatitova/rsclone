@@ -2,8 +2,10 @@ import React, { useState, Dispatch } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
+import styles from '@/components/icons/BaseIcon/BaseIcon.scss';
+import CrossIcon from '@/components/icons/CrossIcon';
 import { IBoardList } from '@/constants';
-import { addBoard } from '@/store/actions/actions';
+import { addBoard, deleteBoard } from '@/store/actions/actions';
 import { RootState } from '@/store/reducers/rootReducer';
 
 import {
@@ -15,6 +17,7 @@ import {
 
 interface DispatchProps {
   onAddBoard: (text: string) => void;
+  onDeleteBoard: (boardId: string) => void;
 }
 
 interface StateProps {
@@ -37,10 +40,15 @@ const BoardList = (props: Props) => {
     setBoardName('');
   };
 
+  const deleteBoardFunc = (boardId: string) => {
+    props.onDeleteBoard(boardId);
+  };
+
   return (
     <StyledBoardList>
       {boards?.map(value => (
         <StyledBoardLink key={value.boardId}>
+          <CrossIcon className={styles.size_l} onClick={() => deleteBoardFunc(value.boardId)} />
           <Link key={value.boardId} to={`/board_${value.boardId}`}>
             {value.boardName}
           </Link>
@@ -75,6 +83,7 @@ const mapStateToProps = (state: RootState) => {
 
 const mapDispatchToProps = (dispatch: Dispatch<any>) => ({
   onAddBoard: (text: string) => dispatch(addBoard({ text })),
+  onDeleteBoard: (boardId: string) => dispatch(deleteBoard({ boardId })),
 });
 
 export default connect<StateProps, DispatchProps>(mapStateToProps, mapDispatchToProps)(BoardList);
