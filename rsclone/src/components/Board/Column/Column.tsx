@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import { ColumnContainer, ColumnTitle } from '@/assets/stylesheets/styles';
 import AddNewItem from '@/components/Board/AddNewItem';
-import ColumnCard from '@/components/Board/ColumnCard';
+import ColumnTask from '@/components/Board/ColumnTask';
 import { DragItem } from '@/components/context/DragItem';
 import styles from '@/components/icons/BaseIcon/BaseIcon.scss';
 import CrossIcon from '@/components/icons/CrossIcon';
@@ -14,7 +14,7 @@ import { RootState } from '@/store/reducers/rootReducer';
 
 interface ColumnProps {
   boardId: string;
-  text: string;
+  columnName: string;
   index: number;
   columnId: string;
   isPreview?: boolean;
@@ -91,7 +91,7 @@ const BoardColumn = (props: Props) => {
     boardId: props.boardId,
     columnId: props.columnId,
     columnIndex: props.index,
-    text: props.text,
+    columnName: props.columnName,
   };
 
   const [, drag] = useDrag({
@@ -111,11 +111,13 @@ const BoardColumn = (props: Props) => {
   return (
     <ColumnContainer isPreview={props.isPreview} ref={ref} isHidden={false}>
       <CrossIcon className={styles.size_l} onClick={deleteColumnFunc} />
-      <ColumnTitle>{props.text}</ColumnTitle>
+      <ColumnTitle>{props.columnName}</ColumnTitle>
       {targetBoardColumn.columnTasks.map((task, index) => (
-        <ColumnCard
+        <ColumnTask
+          taskDate={task.taskDate}
           key={task.taskId}
-          text={task.taskName}
+          taskName={task.taskName}
+          taskText={task.taskText}
           taskIndex={index}
           columnId={targetBoardColumn.columnId}
           taskId={task.taskId}
