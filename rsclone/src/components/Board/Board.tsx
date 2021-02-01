@@ -28,7 +28,7 @@ const Board = (props: Props) => {
       {columns.map((list: IColumns, index: number) => (
         <Column
           columnId={list.columnId}
-          text={list.columnName}
+          columnName={list.columnName}
           key={list.columnId}
           index={index}
           boardId={props.boardID}

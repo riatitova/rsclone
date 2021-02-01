@@ -3,7 +3,7 @@ export type CardDragItem = {
   cardIndex: number;
   cardId: string;
   columnId: string;
-  text: string;
+  taskName: string;
   type: 'CARD';
 };
 
@@ -11,7 +11,7 @@ export type ColumnDragItem = {
   boardId: string;
   columnIndex: number;
   columnId: string;
-  text: string;
+  columnName: string;
   type: 'COLUMN';
 };
 

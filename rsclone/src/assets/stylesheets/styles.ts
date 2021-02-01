@@ -31,10 +31,9 @@ export const AppContainer = styled.div`
   min-height: 100%;
   padding: 1rem;
   // background-color: #FBFAFA;
- 
+
   overflow-x: auto;
   overflow-y: auto;
-
 
   &::-webkit-scrollbar-track {
     box-shadow: inset 0 0 6px #e5e5e5;
@@ -109,7 +108,7 @@ export const AddItemButton = styled.button<AddItemButtonProps>`
   border-radius: 20px;
   border: none;
   outline: none;
-  color: ${props => (props.dark ? '#000' : '#00020')}; 
+  color: ${props => (props.dark ? '#000' : '#00020')};
   cursor: pointer;
   text-align: left;
   transition: background 85ms ease-in;
@@ -118,7 +117,6 @@ export const AddItemButton = styled.button<AddItemButtonProps>`
     background-color: #ffffff52;
     box-shadow: 0.5rem 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
   }
- 
 `;
 
 export const NewItemFormContainer = styled.div`
@@ -148,7 +146,7 @@ export const NewItemButton = styled.button`
   color: #fff;
   padding: 6px 12px;
   text-align: center;
-   &:hover {
+  &:hover {
     background-color: #ffffff52;
     color: #5aac44;
     box-shadow: 0.5rem 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);

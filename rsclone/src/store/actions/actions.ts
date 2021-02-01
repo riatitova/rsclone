@@ -5,9 +5,10 @@ import {
   IMoveColumn,
   IMoveTask,
   ISetDraggedItem,
-  IDeleteCard,
+  IDeleteTask,
   IDeleteColumn,
   IDeleteBoard,
+  IChangeText,
 } from '@/constants/index';
 import {
   ADD,
@@ -20,9 +21,10 @@ import {
   MOVE_COLUMN,
   MOVE_TASK,
   SET_DRAGGED_ITEM,
-  DELETE_CARD,
+  DELETE_TASK,
   DELETE_COLUMN,
   DELETE_BOARD,
+  CHANGE_TEXT,
 } from '@/store/actions/actionTypes';
 
 function add() {
@@ -101,9 +103,9 @@ function setDraggeditem(obj: ISetDraggedItem) {
   };
 }
 
-function deleteCard(obj: IDeleteCard) {
+function deleteTask(obj: IDeleteTask) {
   return {
-    type: DELETE_CARD,
+    type: DELETE_TASK,
     payload: obj,
   };
 }
@@ -122,6 +124,13 @@ function deleteBoard(obj: IDeleteBoard) {
   };
 }
 
+function changeText(obj: IChangeText) {
+  return {
+    type: CHANGE_TEXT,
+    payload: obj,
+  };
+}
+
 export {
   add,
   sub,
@@ -134,7 +143,8 @@ export {
   moveColumn,
   moveTask,
   setDraggeditem,
-  deleteCard,
+  deleteTask,
   deleteColumn,
   deleteBoard,
+  changeText,
 };
