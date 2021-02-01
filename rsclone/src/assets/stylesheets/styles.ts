@@ -24,17 +24,17 @@ export const FooterContainer = styled(HeaderContainer)`
 `;
 
 export const AppContainer = styled.div`
-  // display: flex;
-  // flex-direction: row;
-  // align-items: flex-start;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
   // width: 100vw;
   min-height: 100%;
   padding: 1rem;
   // background-color: #FBFAFA;
-  /*
+ 
   overflow-x: auto;
   overflow-y: auto;
-*/
+
 
   &::-webkit-scrollbar-track {
     box-shadow: inset 0 0 6px #e5e5e5;
@@ -72,8 +72,12 @@ export const ColumnContainer = styled(DragPreviewContainer)`
   margin-right: 20px;
   border-radius: 3px;
   padding: 8px 8px;
+  color: #000;
+  background-color: #fbfafa;
   flex-grow: 0;
   flex-shrink: 0;
+  border-radius: 10px;
+  box-shadow: 0.5rem 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
 `;
 
 export const ColumnTitle = styled.div`
@@ -90,7 +94,7 @@ export const CardContainer = styled(DragPreviewContainer)`
   margin-bottom: 0.5rem;
   padding: 0.5rem 1rem;
   max-width: 300px;
-  border-radius: 3px;
+  border-radius: 10px;
   box-shadow: #091e4240 0px 1px 0px 0px;
 `;
 
@@ -99,19 +103,22 @@ interface AddItemButtonProps {
 }
 
 export const AddItemButton = styled.button<AddItemButtonProps>`
-  background-color: #ffffff3d;
-  border-radius: 3px;
-  border: none;
-  color: ${props => (props.dark ? '#000' : '#fff')};
-  cursor: pointer;
   max-width: 300px;
   padding: 10px 12px;
+  background-color: #e5e5e552;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+  color: ${props => (props.dark ? '#000' : '#00020')}; 
+  cursor: pointer;
   text-align: left;
   transition: background 85ms ease-in;
   width: 100%;
   &:hover {
     background-color: #ffffff52;
+    box-shadow: 0.5rem 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
   }
+ 
 `;
 
 export const NewItemFormContainer = styled.div`
@@ -123,22 +130,29 @@ export const NewItemFormContainer = styled.div`
 `;
 
 export const NewItemInput = styled.input`
-  border-radius: 3px;
+  border-radius: 7px;
   border: none;
+  outline: none;
   box-shadow: #091e4240 0px 1px 0px 0px;
+  box-shadow: 0.5rem 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
   margin-bottom: 0.5rem;
   padding: 0.5rem 1rem;
   width: 100%;
 `;
 
 export const NewItemButton = styled.button`
-  background-color: #5aac44;
-  border-radius: 3px;
+  background-color: #e5e5e5;
+  border-radius: 10px;
   border: none;
-  box-shadow: none;
+  outline: none;
   color: #fff;
   padding: 6px 12px;
   text-align: center;
+   &:hover {
+    background-color: #ffffff52;
+    color: #5aac44;
+    box-shadow: 0.5rem 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
+  }
 `;
 
 export const CustomDragLayerContainer = styled.div`

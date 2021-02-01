@@ -123,7 +123,7 @@ const BoardColumn = (props: Props) => {
         />
       ))}
       <AddNewItem
-        toggleButtonText="+ Add another task"
+        toggleButtonText="+add new task"
         functionName="addTask"
         columnId={props.columnId}
         boardId={props.boardId}
