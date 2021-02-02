@@ -1,6 +1,5 @@
-import React, { useRef, Dispatch, useState, useEffect } from 'react';
+import React, { useRef, Dispatch, useState } from 'react';
 import { useDrop, useDrag } from 'react-dnd';
-import { getEmptyImage } from 'react-dnd-html5-backend';
 import { connect } from 'react-redux';
 
 import { CardContainer } from '@/assets/stylesheets/styles';
@@ -16,7 +15,7 @@ import CardMenu from './TaskMenu';
 
 interface ColumnProps {
   taskText: string;
-  taskDate: Date;
+  taskDate?: Date;
   taskName: string;
   taskIndex: number;
   taskId: string;
@@ -90,25 +89,13 @@ const ColumnCard = (props: Props) => {
     type: 'CARD',
   };
 
-  const [, setHidden] = useState(false);
-
-  const [, drag, preview] = useDrag({
+  const [, drag] = useDrag({
     item,
-    begin: () => {
-      setHidden(true);
-      return props.onSetDraggedItem(props.boardId, item);
-    },
-    end: () => {
-      setHidden(false);
-      return props.onSetDraggedItem(props.boardId, undefined);
-    },
+    begin: () => props.onSetDraggedItem(props.boardId, item),
+    end: () => props.onSetDraggedItem(props.boardId, undefined),
   });
-  useEffect(() => {
-    preview(getEmptyImage());
-  }, [preview]);
 
   drag(drop(ref));
-
   return (
     <CardContainer
       isPreview={props.isPreview}

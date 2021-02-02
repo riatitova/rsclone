@@ -52,7 +52,6 @@ const CustomDragLayer: React.FC = () => {
         ) : (
           <Card
             taskText=""
-            taskDate={new Date()}
             columnId={itemDrag.columnId}
             isPreview
             taskIndex={0}
