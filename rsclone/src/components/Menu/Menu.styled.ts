@@ -8,7 +8,7 @@ const StyledMenu = style.nav<IMenu>`
   justify-content: flex-start;
   background: #FFF;
   height: 100vh;
-  line-height: 32px;
+  line-height: 4rem;
   text-align: left;
   padding: 9.5rem 1.8rem 2rem 1.3rem;
   position: absolute;
@@ -25,9 +25,9 @@ const StyledMenu = style.nav<IMenu>`
 
   a {
     font-size: 1.5rem;
-    // text-transform: uppercase;
     padding: 0.5rem 0;
-    // font-weight: bold;
+    font-weight: 500;
+    // text-transform: uppercase;
     letter-spacing: 0.1rem;
     color: #000;
     text-decoration: none;
@@ -43,13 +43,22 @@ const StyledMenu = style.nav<IMenu>`
     }
     
     div {
-    display: inline-block;
+      display: inline-block;
     }
     
     span {
-      padding-right: 0.5rem;
+      padding: 0 0.3rem;
     }
   }
+`;
+
+export const IconWrapper = style.div`
+  display: inline-block;
+  height: 2.7rem;
+  margin-right: 0.3rem;
+  line-height: 2.5rem;
+  vertical-align: middle;
+  color: #000;
 `;
 
 export default StyledMenu;

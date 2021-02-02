@@ -1,8 +1,8 @@
 import React, { Dispatch, useState } from 'react';
 import { connect } from 'react-redux';
 
-import style from '@/components/Board/ColumnTask/TaskMenu/TaskMenu.scss';
-import { IBoardList } from '@/constants/index';
+import style from '../../components/Board/ColumnTask/TaskMenu/TaskMenu.scss';
+import { IBoardList } from '@/constants';
 import { deleteTask, changeText } from '@/store/actions/actions';
 import { RootState } from '@/store/reducers/rootReducer';
 
@@ -62,7 +62,7 @@ const CardMenu: React.FC<Props> = (props: Props) => {
           />
         </div>
         <div className={style.card__date}>
-          <h3>Date: </h3>
+          <h4>Date: </h4>
           <span>{(props.taskDate || '').toString()}</span>
         </div>
         <div className={style.card__buttons}>
