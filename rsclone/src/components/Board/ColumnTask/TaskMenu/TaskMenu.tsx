@@ -7,7 +7,7 @@ import { deleteTask, changeText } from '@/store/actions/actions';
 import { RootState } from '@/store/reducers/rootReducer';
 
 interface CardMenuProps {
-  taskDate: Date;
+  taskDate?: Date;
   taskName: string;
   taskText: string;
   closePopup: () => void;
@@ -63,7 +63,7 @@ const CardMenu: React.FC<Props> = (props: Props) => {
         </div>
         <div className={style.card__date}>
           <h3>Date: </h3>
-          <span>{props.taskDate.toString()}</span>
+          <span>{(props.taskDate || '').toString()}</span>
         </div>
         <div className={style.card__buttons}>
           <button type="button" className={style.card__button} onClick={deleteCardFunc}>
