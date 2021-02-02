@@ -25,6 +25,7 @@ interface IBoardListState {
 interface IBoardList {
   boardId: string;
   boardName?: string;
+  boardColor?: string;
   draggedItem: DragItem | undefined;
   boardColumns: IColumns[];
 }
@@ -91,7 +92,7 @@ interface IChangeText {
 type ActionType =
   | {
     type: typeof ADD_BOARD;
-    payload: { text: string };
+    payload: { boardName: string; boardColor: string  };
   }
   | {
     type: typeof ADD_COLUMN;
@@ -177,6 +178,10 @@ type AuthActionType =
     type: typeof SET_AUTH_FALSE;
   };
 
+const cardColors: string[] = [
+  'blue', 'yellow', 'green', 'red',
+];
+
 export {
   IState,
   IBoardListState,
@@ -195,4 +200,5 @@ export {
   IDeleteBoard,
   IChangeText,
   AuthActionType,
+  cardColors,
 };

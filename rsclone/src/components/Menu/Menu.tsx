@@ -1,17 +1,17 @@
 import React from 'react';
 
-import StyledMenu, {IconWrapper} from './Menu.styled';
-
 import styles from '@/components/icons/BaseIcon/BaseIcon.scss';
 import HomeHeaderIcon from '@/components/icons/Home';
 
 import { IMenu } from '@/constants';
 
+import StyledMenu, {IconWrapper} from './Menu.styled';
+
 const Menu = ({ open }: IMenu) => (
   <StyledMenu open={open}>
     <a href="/">
       <IconWrapper>
-        <HomeHeaderIcon className={styles.size_sm}/>
+        <HomeHeaderIcon className={styles.size_sm} />
       </IconWrapper>
       <div>
         Homepage
@@ -25,14 +25,7 @@ const Menu = ({ open }: IMenu) => (
       </span>
       Go to boards
     </a>
-    {/*<a href="/boardList">
-      <span role="img" aria-label="Create board">
-        {' '}
-        &#x1f506;
-      </span>
-      Create board
-    </a>
-*/}
+
   </StyledMenu>
 );
 

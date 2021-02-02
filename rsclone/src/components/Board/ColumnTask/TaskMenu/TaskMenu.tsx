@@ -1,10 +1,11 @@
 import React, { Dispatch, useState } from 'react';
 import { connect } from 'react-redux';
 
-import style from './TaskMenu.scss';
 import { IBoardList } from '@/constants';
 import { deleteTask, changeText } from '@/store/actions/actions';
 import { RootState } from '@/store/reducers/rootReducer';
+
+import style from './TaskMenu.scss';
 
 interface CardMenuProps {
   taskDate?: Date;

@@ -63,10 +63,10 @@ function asyncAdd(num: number) {
   };
 }
 
-function addBoard(str: IPayload) {
+function addBoard(boardName: string, boardColor: string) {
   return {
     type: ADD_BOARD,
-    payload: str,
+    payload: {boardName, boardColor},
   };
 }
 

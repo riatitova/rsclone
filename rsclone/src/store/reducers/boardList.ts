@@ -29,7 +29,10 @@ const boardList = (state = initialState, action: ActionType) => {
     case ADD_BOARD:
       return {
         ...state,
-        boardList: [...state.boardList, getNewBoard(action.payload.text || '', nanoid())],
+        boardList: [
+          ...state.boardList,
+          getNewBoard(action.payload.boardName || '', action.payload.boardColor || '', nanoid()),
+        ],
       };
     case ADD_COLUMN: {
       const targetBoardIndex = state.boardList.findIndex(x => x.boardId === action.payload.boardId);
