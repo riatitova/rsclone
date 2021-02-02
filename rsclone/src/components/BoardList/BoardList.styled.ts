@@ -14,12 +14,12 @@ export const BlockWrapper = styled.div`
   width: 10rem;
   height: 7rem;
   margin: 1rem;
-  padding: 0rem;
+  padding: 0.9rem 0 0 0.9rem;
   background-color: #fbfafa;
   border: none;
   border-radius: 7%;
-  text-align: center;
-   line-height: 7rem;
+  text-align: left;
+  // line-height: 7rem;
   box-shadow: 0.2rem 0.2rem 1rem 0 rgba(0, 0, 0, 0.1);
   cursor: pointer;
   }
@@ -40,19 +40,22 @@ export const CrossIconWrapper = styled.div`
   position: absolute;
   top: 0;
   right: 0;
+  color: #e5e5e5;
+  font-weight: 500;
+ 
 `;
 
 export const StyledAddBoardBlock = styled.div`
   width: 10rem;
   height: 7rem;
-  margin: 1rem;
-  padding: 0.5rem;
+  margin: 0.9rem;
+  padding: 0.9rem;
   color: #000;
   // color: #06cafe;
   background-color: #fbfafa;
   font-size: 0.9rem;
   font-weight: 600;
-  text-align: center;
+  text-align: left;
   text-transform: uppercase;
   border: none;
   border-radius: 7%;
@@ -61,14 +64,14 @@ export const StyledAddBoardBlock = styled.div`
 
 export const StyledBoardInputWrapper = styled.div`
   position: relative;
-  height: 2rem;
-  width: 9rem;
+  height: 1.7rem;
+  width: 8rem;
   margin: 0.5rem 0;
 
   input {
-    width: 9rem;
-    height: 2rem;
-    padding: 0 1.5rem 0 0.9rem;
+    width: 8rem;
+    height: 1.7rem;
+    padding: 0 1.1rem 0 0.5rem;
     font-size: 0.7rem;
     text-align: left;
     border: none;
@@ -84,8 +87,8 @@ export const StyledBoardInputWrapper = styled.div`
   button {
     position: absolute;
     right: 0;
-    width: 2rem;
-    height: 2rem;
+    width: 1.7rem;
+    height: 1.7rem;
     font-size: 1rem;
     font-weight: 600;
     text-align: center;

@@ -45,3 +45,27 @@
 .icon_clickable {
   cursor: pointer;
 }
+
+@media (min-width: 480px) and (max-width: 550px) {
+  .size_xs {
+    width: 1.2rem;
+    height: 1.2rem;
+  }
+
+  .size_sm {
+    width: 1.7rem;
+    height: 1.7rem;
+  }
+}
+
+@media (max-width: 479px) {
+  .size_xs {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  .size_sm {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+}
