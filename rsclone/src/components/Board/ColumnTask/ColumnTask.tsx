@@ -1,5 +1,6 @@
-import React, { useRef, Dispatch, useState } from 'react';
+import React, { useRef, Dispatch, useState, useEffect } from 'react';
 import { useDrop, useDrag } from 'react-dnd';
+import { getEmptyImage } from 'react-dnd-html5-backend';
 import { connect } from 'react-redux';
 
 import { CardContainer } from '@/assets/stylesheets/styles';
@@ -89,11 +90,14 @@ const ColumnCard = (props: Props) => {
     type: 'CARD',
   };
 
-  const [, drag] = useDrag({
+  const [, drag, preview] = useDrag({
     item,
     begin: () => props.onSetDraggedItem(props.boardId, item),
     end: () => props.onSetDraggedItem(props.boardId, undefined),
   });
+  useEffect(() => {
+    preview(getEmptyImage());
+  }, [preview]);
 
   drag(drop(ref));
   return (
