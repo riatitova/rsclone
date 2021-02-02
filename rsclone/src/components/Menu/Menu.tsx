@@ -1,6 +1,6 @@
 import React from 'react';
 
-import StyledMenu from './Menu.styled';
+import StyledMenu, {IconWrapper} from './Menu.styled';
 
 import styles from '@/components/icons/BaseIcon/BaseIcon.scss';
 import HomeHeaderIcon from '@/components/icons/Home';
@@ -10,10 +10,12 @@ import { IMenu } from '@/constants';
 const Menu = ({ open }: IMenu) => (
   <StyledMenu open={open}>
     <a href="/">
+      <IconWrapper>
+        <HomeHeaderIcon className={styles.size_sm}/>
+      </IconWrapper>
       <div>
-        <HomeHeaderIcon className={styles.size_sm} />
+        Homepage
       </div>
-      <div>Homepage</div>
     </a>
 
     <a href="/boardList">
@@ -23,14 +25,14 @@ const Menu = ({ open }: IMenu) => (
       </span>
       Go to boards
     </a>
-    <a href="/boardList">
+    {/*<a href="/boardList">
       <span role="img" aria-label="Create board">
         {' '}
         &#x1f506;
       </span>
       Create board
     </a>
-
+*/}
   </StyledMenu>
 );
 
