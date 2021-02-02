@@ -10,7 +10,7 @@ import Footer from '@/components/Footer/Footer';
 import Header from '@/components/Header/Header';
 
 interface IElements {
-  children: JSX.Element;
+  children?: JSX.Element;
 }
 
 const ProjectContainer = (props: IElements): JSX.Element => (
