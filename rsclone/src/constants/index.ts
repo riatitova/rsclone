@@ -10,6 +10,8 @@ import {
   DELETE_COLUMN,
   DELETE_BOARD,
   CHANGE_TEXT,
+  SET_AUTH_FALSE,
+  SET_AUTH_TRUE,
 } from '@/store/actions/actionTypes';
 
 interface IState {
@@ -167,6 +169,14 @@ interface IMenuToggle extends IMenu {
   setOpen: (v: boolean) => void;
 }
 
+type AuthActionType =
+  | {
+    type: typeof SET_AUTH_TRUE;
+  }
+  | {
+    type: typeof SET_AUTH_FALSE;
+  };
+
 export {
   IState,
   IBoardListState,
@@ -184,4 +194,5 @@ export {
   IDeleteColumn,
   IDeleteBoard,
   IChangeText,
+  AuthActionType,
 };

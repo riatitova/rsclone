@@ -25,6 +25,8 @@ import {
   DELETE_COLUMN,
   DELETE_BOARD,
   CHANGE_TEXT,
+  SET_AUTH_TRUE,
+  SET_AUTH_FALSE,
 } from '@/store/actions/actionTypes';
 
 function add() {
@@ -131,6 +133,18 @@ function changeText(obj: IChangeText) {
   };
 }
 
+function setAuthTrue() {
+  return {
+    type: SET_AUTH_TRUE,
+  };
+}
+
+function setAuthFalse() {
+  return {
+    type: SET_AUTH_FALSE,
+  };
+}
+
 export {
   add,
   sub,
@@ -147,4 +161,6 @@ export {
   deleteColumn,
   deleteBoard,
   changeText,
+  setAuthTrue,
+  setAuthFalse,
 };

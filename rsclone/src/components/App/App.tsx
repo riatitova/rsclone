@@ -7,6 +7,7 @@ import BoardList from '@/components/BoardList';
 import { IBoardList } from '@/constants';
 import { RootState } from '@/store/reducers/rootReducer';
 
+import Authorization from '../Autharisation';
 import ProjectContainer from '../layers/ProjectContainer';
 
 interface StateProps {
@@ -15,22 +16,22 @@ interface StateProps {
 
 const App = (props: StateProps): JSX.Element => (
   <Router>
-    <ProjectContainer>
-      <Switch>
-        <Route exact path="/">
-          <div>Home</div>
-        </Route>
+    <Switch>
+      <Route path="/authorization">
+        <Authorization />
+      </Route>
+      <Route path="/">
+        <ProjectContainer />
         <Route path="/boardList">
           <BoardList />
         </Route>
-
         {props.board.map(value => (
           <Route key={value.boardId} path={`/board_${value.boardId}`}>
             <Board boardID={value.boardId} />
           </Route>
         ))}
-      </Switch>
-    </ProjectContainer>
+      </Route>
+    </Switch>
   </Router>
 );
 
