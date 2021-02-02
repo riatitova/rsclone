@@ -8,6 +8,7 @@ const StyledMenu = style.nav<IMenu>`
   justify-content: flex-start;
   background: #FFF;
   height: 100vh;
+  line-height: 32px;
   text-align: left;
   padding: 9.5rem 1.8rem 2rem 1.3rem;
   position: absolute;
@@ -18,7 +19,7 @@ const StyledMenu = style.nav<IMenu>`
   transform: ${({ open }) => (open ? 'translateX(0)' : 'translateX(-100%)')};
   z-index: 10;
   
-  @media (max-width: 650px) {
+  @media (max-width: 600px) {
     width: 100%;
   }
 
@@ -39,6 +40,10 @@ const StyledMenu = style.nav<IMenu>`
 
     &:hover {
       color: #30CFD0;
+    }
+    
+    div {
+    display: inline-block;
     }
     
     span {

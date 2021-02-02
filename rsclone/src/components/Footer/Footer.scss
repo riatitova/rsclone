@@ -34,3 +34,23 @@
     right: 0.3rem;
   }
 }
+
+@media (min-width: 480px) and (max-width: 550px) {
+  .footer {
+    &__icon {
+      height: 1rem;
+    }
+  }
+}
+
+@media (max-width: 479px) {
+  .footer {
+    &__title {
+      font-size: 0.9rem;
+    }
+
+    &__icon {
+      height: 0.9rem;
+    }
+  }
+}
