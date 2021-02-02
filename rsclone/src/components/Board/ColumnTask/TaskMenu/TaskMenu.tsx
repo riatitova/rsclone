@@ -1,7 +1,7 @@
 import React, { Dispatch, useState } from 'react';
 import { connect } from 'react-redux';
 
-import style from '../../components/Board/ColumnTask/TaskMenu/TaskMenu.scss';
+import style from './TaskMenu.scss';
 import { IBoardList } from '@/constants';
 import { deleteTask, changeText } from '@/store/actions/actions';
 import { RootState } from '@/store/reducers/rootReducer';
