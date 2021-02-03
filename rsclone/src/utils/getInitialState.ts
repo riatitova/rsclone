@@ -14,6 +14,7 @@ const getInitialState = (name = 'Board'): InitialState => {
         boardId: nanoid(),
         boardName: name,
         draggedItem: undefined,
+        boardColor: '',
         boardColumns: [
           {
             columnId: nanoid(),
@@ -74,6 +75,7 @@ const getInitialState = (name = 'Board'): InitialState => {
       {
         boardId: nanoid(),
         boardName: `${name}_1`,
+        boardColor: '',
         draggedItem: undefined,
         boardColumns: [
           {
@@ -127,7 +129,7 @@ const getInitialState = (name = 'Board'): InitialState => {
 const getNewBoard = (name: string, color: string, boardId: string) => ({
   boardId,
   boardName: name,
-  boardColor: '',
+  boardColor: color,
   draggedItem: undefined,
   boardColumns: [
     {

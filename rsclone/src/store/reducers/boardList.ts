@@ -31,7 +31,7 @@ const boardList = (state = initialState, action: ActionType) => {
         ...state,
         boardList: [
           ...state.boardList,
-          getNewBoard(action.payload.boardName || '', action.payload.boardColor || '', nanoid()),
+          getNewBoard(action.payload.boardName, action.payload.boardColor, nanoid()),
         ],
       };
     case ADD_COLUMN: {
