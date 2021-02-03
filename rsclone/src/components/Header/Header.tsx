@@ -4,12 +4,10 @@ import { Link } from 'react-router-dom';
 import Burger from '@/components/Burger/Burger';
 import style from '@/components/Header/Header.scss';
 import Menu from '@/components/Menu';
-import Search from '@/components/Search/Search';
 import styles from '@/components/icons/BaseIcon/BaseIcon.scss';
 import HomeHeaderIcon from '@/components/icons/Home';
 
 import useOnClickOutside from './hook';
-// import { IMenuToggle } from '@/constants';
 
 function Header() {
   const [open, setOpen] = useState<boolean>(false);
@@ -30,8 +28,6 @@ function Header() {
             <HomeHeaderIcon className={styles.size_sm} />
           </Link>
         </div>
-
-        <Search />
       </div>
 
       <div className={style.header__title_wrapper}>

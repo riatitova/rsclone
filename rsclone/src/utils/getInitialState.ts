@@ -97,7 +97,7 @@ const getInitialState = (name = 'Board'): InitialState => {
               {
                 taskId: nanoid(),
                 taskName: 'write tests',
-                taskText: 'Task description',
+                taskText: '',
                 taskDate: date,
               },
               {
