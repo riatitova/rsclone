@@ -1,0 +1,89 @@
+@import '../../assets/stylesheets/index.scss';
+
+.footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+
+  &__icons_wrapper {
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &__title {
+    margin-right: 0.5rem;
+  }
+
+  &__link {
+    text-decoration: none;
+    color: $color-black;
+  }
+
+  &__icon {
+    margin: 0 0.3rem 0.2rem;
+    padding: 0;
+    height: 1.5rem;
+    &_rs {
+      margin: 0 0 0 0.2rem;
+    }
+  }
+
+  &__logo {
+    position: absolute;
+    right: 0.3rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    & span {
+      display: inline-block;
+      font-size: 0.9rem;
+      font-weight: 600;
+      line-height: 1.5rem;
+      padding: 5px;
+    }
+  }
+}
+
+@media (min-width: 480px) and (max-width: 550px) {
+  .footer {
+    &__icon {
+      height: 1rem;
+    }
+  }
+}
+
+@media (min-width: 300px) and (max-width: 479px) {
+  .footer {
+    &__title {
+      font-size: 0.9rem;
+    }
+
+    &__icon {
+      height: 0.9rem;
+      &_rs {
+        height: 1.7rem
+      }
+    }
+  }
+}
+
+@media (max-width: 479px) {
+  .footer {
+    justify-content: flex-start;
+    &__title {
+      font-size: 0.9rem;
+    }
+
+    &__icon {
+      height: 0.9rem;
+
+      &_rs {
+        height: 1.7rem
+      }
+    }
+  }
+}
