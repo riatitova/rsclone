@@ -2,10 +2,9 @@ import React from 'react';
 
 import styles from '@/components/icons/BaseIcon/BaseIcon.scss';
 import HomeHeaderIcon from '@/components/icons/Home';
-
 import { IMenu } from '@/constants';
 
-import StyledMenu, {IconWrapper} from './Menu.styled';
+import StyledMenu, { IconWrapper } from './Menu.styled';
 
 const Menu = ({ open }: IMenu) => (
   <StyledMenu open={open}>
@@ -13,9 +12,7 @@ const Menu = ({ open }: IMenu) => (
       <IconWrapper>
         <HomeHeaderIcon className={styles.size_sm} />
       </IconWrapper>
-      <div>
-        Homepage
-      </div>
+      <div>Homepage</div>
     </a>
 
     <a href="/boardList">
@@ -25,7 +22,6 @@ const Menu = ({ open }: IMenu) => (
       </span>
       Go to boards
     </a>
-
   </StyledMenu>
 );
 
