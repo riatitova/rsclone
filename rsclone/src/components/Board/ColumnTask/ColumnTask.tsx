@@ -8,7 +8,7 @@ import { DragItem } from '@/components/context/DragItem';
 import styles from '@/components/icons/BaseIcon/BaseIcon.scss';
 import CardMenuIcon from '@/components/icons/TaskMenuIcon';
 import { IBoardList } from '@/constants/index';
-import { setDraggeditem, moveTask } from '@/store/actions/actions';
+import { setDraggeditem, moveTask, toggleDisable } from '@/store/actions/actions';
 import { RootState } from '@/store/reducers/rootReducer';
 import isHidden from '@/utils/isHidden';
 
@@ -34,6 +34,7 @@ interface DispatchProps {
     boardId: string
   ) => void;
   onSetDraggedItem: (boardId: string, Drag: DragItem | undefined) => void;
+  onSetToggle: () => void;
 }
 
 interface HoverDrag {
@@ -46,17 +47,23 @@ interface HoverDrag {
 
 interface StateProps {
   board: IBoardList[];
+  isDisable: boolean;
 }
 
 type Props = StateProps & ColumnProps & DispatchProps;
 
 const ColumnCard = (props: Props) => {
   const board: IBoardList = props.board.filter((x: IBoardList) => x.boardId === props.boardId)[0];
-  // console.log(board);
 
   const [showPopup, setShowPopup] = useState(false);
+
   function togglePopup() {
     setShowPopup(!showPopup);
+  }
+
+  function toggle() {
+    togglePopup();
+    props.onSetToggle();
   }
 
   const ref = useRef<HTMLDivElement>(null);
@@ -92,6 +99,7 @@ const ColumnCard = (props: Props) => {
 
   const [, drag, preview] = useDrag({
     item,
+    canDrag: !props.isDisable,
     begin: () => props.onSetDraggedItem(props.boardId, item),
     end: () => props.onSetDraggedItem(props.boardId, undefined),
   });
@@ -107,7 +115,7 @@ const ColumnCard = (props: Props) => {
       ref={ref}
     >
       {props.taskName}
-      <CardMenuIcon className={styles.size_xs} onClick={togglePopup} />
+      <CardMenuIcon className={styles.size_xs} onClick={toggle} />
       {showPopup ? (
         <CardMenu
           taskText={props.taskText}
@@ -127,6 +135,7 @@ const mapStateToProps = (state: RootState) => {
   const boardList: IBoardList[] = state.boardList?.boardList;
   return {
     board: boardList,
+    isDisable: state.disableDnd.disable,
   };
 };
 
@@ -140,6 +149,7 @@ const mapDispatchToProps = (dispatch: Dispatch<any>) => ({
   ) => dispatch(moveTask({ dragIndex, hoverIndex, sourceColumn, targetColumn, boardId })),
   onSetDraggedItem: (boardId: string, Drag: DragItem | undefined) =>
     dispatch(setDraggeditem({ boardId, Drag })),
+  onSetToggle: () => dispatch(toggleDisable()),
 });
 
 export default connect<StateProps, DispatchProps, ColumnProps>(

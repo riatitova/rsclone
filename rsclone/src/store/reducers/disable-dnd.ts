@@ -1,5 +1,5 @@
 import { DisableActionType } from '../../constants/index';
-import { SET_DISABLE_TRUE, SET_DISABLE_FALSE } from '../actions/actionTypes';
+import { SET_DISABLE_TRUE, SET_DISABLE_FALSE, TOGGLE_DISABLE } from '../actions/actionTypes';
 
 const initialState = {
   disable: false,
@@ -17,6 +17,12 @@ const authorization = (state = initialState, action: DisableActionType) => {
       return {
         ...state,
         disable: false,
+      };
+    }
+    case TOGGLE_DISABLE: {
+      return {
+        ...state,
+        disable: !state.disable,
       };
     }
     default:

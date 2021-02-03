@@ -14,6 +14,7 @@ import {
   SET_AUTH_TRUE,
   SET_DISABLE_FALSE,
   SET_DISABLE_TRUE,
+  TOGGLE_DISABLE,
 } from '@/store/actions/actionTypes';
 
 interface IState {
@@ -188,6 +189,9 @@ type AuthActionType =
 type DisableActionType =
   | {
     type: typeof SET_DISABLE_FALSE;
+  }
+  | {
+    type: typeof TOGGLE_DISABLE;
   }
   | {
     type: typeof SET_DISABLE_TRUE;
