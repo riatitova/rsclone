@@ -10,6 +10,8 @@ import {
   IDeleteBoard,
   IChangeText,
   IAddBoard,
+  IBoardsIds,
+  IBoardList,
 } from '@/constants/index';
 import {
   ADD,
@@ -31,6 +33,11 @@ import {
   SET_DISABLE_FALSE,
   SET_DISABLE_TRUE,
   TOGGLE_DISABLE,
+  SET_USER_NAME,
+  SET_USER_PASSWORD,
+  SET_USER_ID,
+  SET_USER_BOARDS,
+  GET_BOARD,
 } from '@/store/actions/actionTypes';
 
 function add() {
@@ -166,6 +173,48 @@ function toggleDisable() {
     type: TOGGLE_DISABLE,
   };
 }
+function setUserName(userName: string) {
+  return {
+    type: SET_USER_NAME,
+    payload: {
+      userName,
+    },
+  };
+}
+
+function setUserPassword(userPassword: string) {
+  return {
+    type: SET_USER_PASSWORD,
+    payload: {
+      userPassword,
+    },
+  };
+}
+
+function setUserId(userId: string) {
+  return {
+    type: SET_USER_ID,
+    payload: {
+      userId,
+    },
+  };
+}
+
+function setUserBoards(userBoards: IBoardsIds[]) {
+  return {
+    type: SET_USER_BOARDS,
+    payload: {
+      userBoards,
+    },
+  };
+}
+
+function getBoard(userBoards: IBoardList) {
+  return {
+    type: GET_BOARD,
+    payload: userBoards,
+  };
+}
 
 export {
   add,
@@ -188,4 +237,9 @@ export {
   setDisableTrue,
   setDisableFalse,
   toggleDisable,
+  setUserId,
+  setUserPassword,
+  setUserName,
+  setUserBoards,
+  getBoard,
 };

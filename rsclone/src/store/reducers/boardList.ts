@@ -12,6 +12,7 @@ import {
   DELETE_COLUMN,
   DELETE_BOARD,
   CHANGE_TEXT,
+  GET_BOARD,
 } from '@/store/actions/actionTypes';
 import {
   overrideItemAtIndex,
@@ -34,6 +35,13 @@ const boardList = (state = initialState, action: ActionType) => {
           getNewBoard(action.payload.boardName, action.payload.boardColor, nanoid()),
         ],
       };
+    case GET_BOARD: {
+      return {
+        ...state,
+        boardList: [...state.boardList, action.payload],
+      };
+    }
+
     case ADD_COLUMN: {
       const targetBoardIndex = state.boardList.findIndex(x => x.boardId === action.payload.boardId);
 

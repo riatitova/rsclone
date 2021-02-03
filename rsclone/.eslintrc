@@ -178,6 +178,6 @@
     ],
     "@typescript-eslint/unbound-method": "off",
     "no-param-reassign": ["error", { "props": false }],
-    "react/destructuring-assignment": "off",
+    "react/destructuring-assignment": "off",  
   }
 }

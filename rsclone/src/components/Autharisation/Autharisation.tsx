@@ -3,8 +3,8 @@ import React, { useState, Dispatch } from 'react';
 import { connect } from 'react-redux';
 import { RootState } from '@/store/reducers/rootReducer';
 import { setAuthTrue, setAuthFalse } from '../../store/actions/actions';
-
-import { getRequest, postRequest, putRequest, deleteRequest } from '../../utils/fetchUtils';
+import PATH from '../../constants/PATH';
+import { createUser } from '../../store/effects/fetchEffects';
 
 interface StateProps {
   isAuth: boolean;
@@ -13,18 +13,12 @@ interface StateProps {
 interface DispatchProps {
   onSetAuthTrue: () => void;
   onSetAuthFalse: () => void;
+  onCreateUser: (name: string, password: string) => void;
 }
 
 type Props = StateProps & DispatchProps;
 
-const URLS = {
-  getUserData: 'localhost:8080/users',
-  postUser: 'localhost:8080/users',
-  updateUser: 'localhost:8080/users',
-  deleteUser: 'localhost:8080/users',
-}
-
-const Authorisation: React.FC<Props> = (props) => {
+const Authorisation: React.FC<Props> = props => {
   const [name, setName] = useState('');
   const onChangeName = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newName = event.currentTarget.value;
@@ -38,21 +32,7 @@ const Authorisation: React.FC<Props> = (props) => {
   };
 
   const signUp = () => {
-    console.log('!!!');
-    const body = JSON.stringify({
-      name: name,
-      password: password,
-      boards: [
-        {
-          boardName: 'sadad',
-          boardId: 'id1',
-        },
-      ],
-    });
-
-    const rawResponse = postRequest(URLS.postUser, body);
-
-    console.log(rawResponse);
+    props.onCreateUser(name, password);
   };
 
   return (
@@ -73,23 +53,22 @@ const Authorisation: React.FC<Props> = (props) => {
   );
 };
 
-const mapStateToProps = (state: RootState) => {
-  return {
-    isAuth: state.authorization.isAuth,
-  };
-};
-
-const mapDispatchToProps = (dispatch: Dispatch<any>) => ({
-  onSetAuthFalse: () => dispatch(setAuthFalse()),
-  onSetAuthTrue: () => dispatch(setAuthTrue()),
-});
-
-// const mapDispatchToProps = {
-//   setAuthFalse,
-//   setAuthTrue,
+// const mapStateToProps = (state: RootState) => {
+//   return {
+//     isAuth: state.authorization.isAuth,
+//   };
 // };
 
-export default connect<StateProps, DispatchProps>(
-  mapStateToProps,
-  mapDispatchToProps
-)(Authorisation);
+// const mapDispatchToProps = (dispatch: Dispatch<any>) => ({
+//   onSetAuthFalse: () => dispatch(setAuthFalse()),
+//   onSetAuthTrue: () => dispatch(setAuthTrue()),
+//   onCreateUser: (name: string, password: string) => createUser(dispatch)(name, password),
+// });
+
+// const mapDispatchToProps = {
+//   onSetAuthFalse: setAuthFalse,
+//   onSetAuthTrue: setAuthTrue,
+//   createUser,
+// };
+
+export default Authorisation;

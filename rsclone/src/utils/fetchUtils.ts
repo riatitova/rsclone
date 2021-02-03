@@ -27,6 +27,7 @@ export const postRequest = async <T>(url: string, body: string): Promise<T> => {
     const response = await rawResponse.json();
     return response;
   }
+  console.log(rawResponse);
   throw Error(String(rawResponse.status));
 };
 

@@ -1,10 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const user = require('../controllers/users');
-<<<<<<< HEAD
-=======
 const auth = require('../utils/authantiction');
->>>>>>> feat: rest API
+
 
 router.post('/', (req, res) => {
     user.createUser(req,res);

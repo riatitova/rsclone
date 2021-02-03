@@ -9,9 +9,11 @@ exports.getUserDataByName = (req, res) => {
     console.log('get data by name:', name);
     User.find({ name: name }).exec((err, user) => {
         if (err) {
+            console.log(1);
             return res.send(500, err);
         }
         res.status(200).send(user);
+        console.log(2);
     })
 };
 
@@ -28,9 +30,9 @@ exports.createUser = (req, res) => {
     console.log('new user data:', userData);
     newUser.save((err) => {
         if (err) {
-            res.status(400).send('Unable to save user to database');
+            return res.status(400).send('Unable to save user to database');
         } else {
-            res.status(200).send(userData);
+            return res.status(200).send(2);;
         }
     });
 };
@@ -48,7 +50,6 @@ exports.updateUser = (req, res) => {
             res.status(200).send(result);
         }
     });
-<<<<<<< HEAD
 };
 
 exports.deleteUserById = (req, res) => {
@@ -56,27 +57,10 @@ exports.deleteUserById = (req, res) => {
 
     console.log('get data by userId:', userId);
 
-    User.deleteOne({ id: userId }, () => {
+    User.deleteOne({ id: userId }, (err) => {
         if (err) {
             return res.send(500, err);
         }
         res.status(200).send(userId);
     })
-=======
->>>>>>> feat: rest API
 };
-
-exports.deleteBoardById = (req, res) => {
-    const { boardId } = req.query;
-
-    console.log('delete board:', boardId);
-
-    Board.deleteOne(boardId, (err, result) => {
-        if (err) {
-            res.status(500).send(err);
-        }
-        else {
-            res.status(200).send(result);
-        }
-    });
-} 

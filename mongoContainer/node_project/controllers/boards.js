@@ -3,18 +3,9 @@ const generator = require('../utils/idGenerator');
 const path = require('path');
 const Board = require('../models/board');
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-exports.getBoardById = (req, res) => {
-    const { boardId } = req.query.id;
-=======
-exports.getBoardaById = (req, res) => {
-    const { boardId } = req.param.id;
->>>>>>> test: fetch
-=======
+
 exports.getBoardById = (req, res) => {
     const { boardId } = req.query;
->>>>>>> feat: rest API
     console.log('get data by boardId:', boardId);
 
     Board.find({ boardId: boardId }).exec((err, board) => {
@@ -33,7 +24,7 @@ exports.createBoard = (req, res) => {
         boardId: generator.generateId(),
         boardColumns: rawBoardData?.boardColumns?.map((column) => {
             const newColumnTasks = column.columnTasks.map((task) => ({ ...task, taskId: generator.generateId() }));
-            const newColumn = { ...column, newColiumnTasks };
+            const newColumn = { ...column, newColumnTasks };
             return { ...newColumn, columnId: generator.generateId() }
         }),
     };
@@ -66,12 +57,6 @@ exports.updateBoardById = (req, res) => {
 
 exports.deleteBoardById = (req, res) => {
     const { boardId } = req.query;
-<<<<<<< HEAD
-};
-
-// getBoardById
-// deleteBoardById
-=======
 
     console.log('delete board:', boardId);
 
@@ -84,4 +69,3 @@ exports.deleteBoardById = (req, res) => {
         }
     });
 } 
->>>>>>> feat: rest API

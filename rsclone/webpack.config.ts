@@ -36,7 +36,7 @@ const formStylesRule = (useModules = false) => ({
 const config: Configuration = {
   mode: isProduction ? 'production' : 'development',
   devtool: isProduction ? false : 'source-map',
-  entry: './src/index.tsx',
+  entry: ['babel-polyfill', './src/index.tsx'],
   output: {
     path: resolve(__dirname, 'dist'),
     filename: 'bundle.js',

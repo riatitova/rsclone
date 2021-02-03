@@ -12,14 +12,14 @@ import ProjectContainer from '../layers/ProjectContainer';
 
 interface StateProps {
   board: IBoardList[];
+  isAuth: boolean;
 }
 
 const App = (props: StateProps): JSX.Element => (
   <Router>
     <Switch>
-      <Route path="/authorization">
-        <Authorization />
-      </Route>
+      {!props.isAuth && <Authorization />}
+      {props.isAuth && <React.Fragment />}
       <Route path="/">
         <ProjectContainer />
         <Route path="/boardList">
@@ -39,6 +39,7 @@ const mapStateToProps = (state: RootState) => {
   const boardList: IBoardList[] = state.boardList?.boardList;
   return {
     board: boardList,
+    isAuth: state.authorization.isAuth,
   };
 };
 

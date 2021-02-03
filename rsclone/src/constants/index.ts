@@ -15,6 +15,11 @@ import {
   SET_DISABLE_FALSE,
   SET_DISABLE_TRUE,
   TOGGLE_DISABLE,
+  SET_USER_NAME,
+  SET_USER_PASSWORD,
+  SET_USER_ID,
+  SET_USER_BOARDS,
+  GET_BOARD,
 } from '@/store/actions/actionTypes';
 
 interface IState {
@@ -103,6 +108,10 @@ type ActionType =
     payload: { boardName: string; boardColor: string };
   }
   | {
+    type: typeof GET_BOARD;
+    payload: IBoardList;
+  }
+  | {
     type: typeof ADD_COLUMN;
     payload: { text: string; boardId: string };
   }
@@ -183,6 +192,30 @@ type AuthActionType =
     type: typeof SET_AUTH_TRUE;
   }
   | {
+    type: typeof SET_USER_ID;
+    payload: {
+      userId: string;
+    };
+  }
+  | {
+    type: typeof SET_USER_PASSWORD;
+    payload: {
+      userPassword: string;
+    };
+  }
+  | {
+    type: typeof SET_USER_BOARDS;
+    payload: {
+      userBoards: IBoardsIds;
+    };
+  }
+  | {
+    type: typeof SET_USER_NAME;
+    payload: {
+      userName: string;
+    };
+  }
+  | {
     type: typeof SET_AUTH_FALSE;
   };
 
@@ -202,6 +235,17 @@ interface IDisable {
 }
 
 const cardColors: string[] = ['blue', 'yellow', 'green', 'red'];
+interface IResponseCreateUser {
+  name: string;
+  password: string;
+  id: string;
+  boardsIds: IBoardsIds[];
+}
+
+interface IBoardsIds {
+  boardName: string;
+  boardId: string;
+}
 
 export {
   IState,
@@ -225,4 +269,6 @@ export {
   IAddBoard,
   DisableActionType,
   IDisable,
+  IResponseCreateUser,
+  IBoardsIds,
 };
