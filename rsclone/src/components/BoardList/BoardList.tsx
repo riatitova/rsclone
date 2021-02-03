@@ -48,7 +48,7 @@ const BoardList = (props: Props) => {
   return (
     <StyledBoardList>
       {props.boards?.map(value => (
-        <BlockWrapper key={value.boardId} className={boardColor}>
+        <BlockWrapper key={value.boardId} className={value.boardColor}>
           <CrossIconWrapper>
             <CrossIcon className={styles.size_l} onClick={() => deleteBoardFunc(value.boardId)} />
           </CrossIconWrapper>
@@ -69,8 +69,16 @@ const BoardList = (props: Props) => {
             onChange={changeName}
           />
           <CardBgColors>
-            {cardColors.map(color => (
-              <div key={color} className={color} onClick={() => setBoardColor(color)} />
+            {cardColors.map((color, index) => (
+              <div
+                key={color}
+                className={color}
+                onClick={() => setBoardColor(color)}
+                onKeyDown={() => setBoardColor(color)}
+                role="button"
+                tabIndex={index}
+                aria-label=" "
+              />
             ))}
           </CardBgColors>
           <button type="submit" onClick={onAddBoardFunc}>
@@ -90,7 +98,8 @@ const mapStateToProps = (state: RootState) => {
 };
 
 const mapDispatchToProps = (dispatch: Dispatch<any>) => ({
-  onAddBoard: (boardName: string, boardColor: string) => dispatch(addBoard(boardName, boardColor)),
+  onAddBoard: (boardName: string, boardColor: string) =>
+    dispatch(addBoard({ boardName, boardColor })),
   onDeleteBoard: (boardId: string) => dispatch(deleteBoard({ boardId })),
 });
 
