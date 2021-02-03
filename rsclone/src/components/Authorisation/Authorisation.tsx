@@ -5,6 +5,7 @@ import { RootState } from '@/store/reducers/rootReducer';
 import { setAuthTrue, setAuthFalse } from '../../store/actions/actions';
 import PATH from '../../constants/PATH';
 import { createUser } from '../../store/effects/fetchEffects';
+import style from "./Authorisation.scss";
 
 interface StateProps {
   isAuth: boolean;
@@ -36,19 +37,20 @@ const Authorisation: React.FC<Props> = props => {
   };
 
   return (
-    <div>
-      <input type="text" placeholder="name" onChange={onChangeName} value={name}></input>
+    <div className={style.auth}>
+      <input className={style.auth__input} type="text" placeholder="name" onChange={onChangeName} value={name}></input>
       <input
+        className={style.auth__input}
         type="text"
         placeholder="password"
         onChange={onChangePassword}
         value={password}
       ></input>
-      <button type="submit" onClick={signUp}>
+      <button className={style.auth__button} type="submit" onClick={signUp}>
         Sign up
       </button>
       {console.log(props)}
-      <span>isAuth: {props.isAuth ? 'authorized' : 'not authorized'}</span>
+      <span className={style.auth__title}>isAuth: {props.isAuth ? 'authorized' : 'not authorized'}</span>
     </div>
   );
 };

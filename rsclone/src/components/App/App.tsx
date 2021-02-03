@@ -7,7 +7,7 @@ import BoardList from '@/components/BoardList';
 import { IBoardList } from '@/constants';
 import { RootState } from '@/store/reducers/rootReducer';
 
-import Authorization from '../Autharisation';
+import Authorization from '../Authorisation';
 import ProjectContainer from '../layers/ProjectContainer';
 
 interface StateProps {
