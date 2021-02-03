@@ -1,8 +1,14 @@
 import React, { Dispatch, useState } from 'react';
 import { connect } from 'react-redux';
 
-import { IBoardList } from '@/constants';
-import { deleteTask, changeText } from '@/store/actions/actions';
+import { IDisable } from '@/constants';
+import {
+  deleteTask,
+  changeText,
+  setDisableTrue,
+  setDisableFalse,
+  toggleDisable,
+} from '@/store/actions/actions';
 import { RootState } from '@/store/reducers/rootReducer';
 
 import style from './TaskMenu.scss';
@@ -20,21 +26,23 @@ interface CardMenuProps {
 interface DispatchProps {
   onDeleteCard: (cardId: string, boardId: string, columnId: string) => void;
   onChangeText: (taskId: string, boardId: string, columnId: string, text: string) => void;
+  onSetToggle: () => void;
 }
 
 interface StateProps {
   // eslint-disable-next-line react/no-unused-prop-types
-  board: IBoardList[];
+  isDisable: IDisable;
 }
 
 type Props = StateProps & CardMenuProps & DispatchProps;
 
-const CardMenu: React.FC<Props> = (props: Props) => {
+const TaskMenu: React.FC<Props> = (props: Props) => {
   const [text, setText] = useState(props.taskText);
 
   const deleteCardFunc = () => {
     props.onDeleteCard(props.taskId, props.boardId, props.columnId);
     props.closePopup();
+    props.onSetToggle();
   };
 
   const changeTextFunc = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -44,6 +52,7 @@ const CardMenu: React.FC<Props> = (props: Props) => {
   const closePopupFunc = () => {
     props.onChangeText(props.taskId, props.boardId, props.columnId, text);
     props.closePopup();
+    props.onSetToggle();
   };
 
   return (
@@ -79,21 +88,21 @@ const CardMenu: React.FC<Props> = (props: Props) => {
   );
 };
 
-const mapStateToProps = (state: RootState) => {
-  const boardList: IBoardList[] = state.boardList?.boardList;
-  return {
-    board: boardList,
-  };
-};
+const mapStateToProps = (state: RootState) => ({
+  isDisable: state.disableDnd,
+});
 
 const mapDispatchToProps = (dispatch: Dispatch<any>) => ({
   onDeleteCard: (taskId: string, boardId: string, columnId: string) =>
     dispatch(deleteTask({ taskId, boardId, columnId })),
   onChangeText: (taskId: string, boardId: string, columnId: string, text: string) =>
     dispatch(changeText({ taskId, boardId, columnId, text })),
+  onSetDisableTrue: () => dispatch(setDisableTrue()),
+  onSetDisableFalse: () => dispatch(setDisableFalse()),
+  onSetToggle: () => dispatch(toggleDisable()),
 });
 
 export default connect<StateProps, DispatchProps, CardMenuProps>(
   mapStateToProps,
   mapDispatchToProps
-)(CardMenu);
+)(TaskMenu);

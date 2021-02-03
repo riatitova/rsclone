@@ -37,6 +37,7 @@ interface DispatchProps {
 
 interface StateProps {
   board: IBoardList[];
+  isDisable: boolean;
 }
 
 type Props = StateProps & DispatchProps & ColumnProps;
@@ -97,6 +98,7 @@ const BoardColumn = (props: Props) => {
 
   const [, drag, preview] = useDrag({
     item,
+    canDrag: !props.isDisable,
     begin: () => props.onSetDraggedItem(props.boardId, item),
     end: () => props.onSetDraggedItem(props.boardId, undefined),
   });
@@ -144,6 +146,7 @@ const mapStateToProps = (state: RootState) => {
   const boardList: IBoardList[] = state.boardList?.boardList;
   return {
     board: boardList,
+    isDisable: state.disableDnd.disable,
   };
 };
 
