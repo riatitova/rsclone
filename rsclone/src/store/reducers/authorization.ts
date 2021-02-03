@@ -3,6 +3,7 @@ import { SET_AUTH_TRUE, SET_AUTH_FALSE } from '../actions/actionTypes';
 
 const initialState = {
   isAuth: false,
+  
 };
 
 const authorization = (state = initialState, action: AuthActionType) => {

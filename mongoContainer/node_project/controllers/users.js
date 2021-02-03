@@ -4,10 +4,10 @@ const path = require('path');
 const User = require('../models/user');
 
 
-exports.getUserDataById = (req, res) => {
-    const userId = req.query.id;
-    console.log('get data by userId:', userId);
-    User.find({ id: userId }).exec((err, user) => {
+exports.getUserDataByName = (req, res) => {
+    const name = req.query.name;
+    console.log('get data by name:', name);
+    User.find({ name: name }).exec((err, user) => {
         if (err) {
             return res.send(500, err);
         }
@@ -40,7 +40,7 @@ exports.updateUser = (req, res) => {
 
     console.log('updated user:', userData);
 
-    User.update({ id: userData.id }, {...userData}, (err, result) => {
+    User.updateOne({ id: userData.id }, {...userData}, (err, result) => {
         if (err) {
             res.status(500).send(err);
         }
@@ -48,6 +48,7 @@ exports.updateUser = (req, res) => {
             res.status(200).send(result);
         }
     });
+<<<<<<< HEAD
 };
 
 exports.deleteUserById = (req, res) => {
@@ -61,4 +62,21 @@ exports.deleteUserById = (req, res) => {
         }
         res.status(200).send(userId);
     })
+=======
+>>>>>>> feat: rest API
 };
+
+exports.deleteBoardById = (req, res) => {
+    const { boardId } = req.query;
+
+    console.log('delete board:', boardId);
+
+    Board.deleteOne(boardId, (err, result) => {
+        if (err) {
+            res.status(500).send(err);
+        }
+        else {
+            res.status(200).send(result);
+        }
+    });
+} 
