@@ -9,6 +9,7 @@ import {
   IDeleteColumn,
   IDeleteBoard,
   IChangeText,
+  IAddBoard,
 } from '@/constants/index';
 import {
   ADD,
@@ -63,10 +64,10 @@ function asyncAdd(num: number) {
   };
 }
 
-function addBoard(str: IPayload) {
+function addBoard(obj: IAddBoard) {
   return {
     type: ADD_BOARD,
-    payload: str,
+    payload: obj,
   };
 }
 

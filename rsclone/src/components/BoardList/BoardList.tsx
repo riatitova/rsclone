@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 import styles from '@/components/icons/BaseIcon/BaseIcon.scss';
 import CrossIcon from '@/components/icons/CrossIcon';
-import { IBoardList } from '@/constants';
+import { IBoardList, cardColors } from '@/constants';
 import { addBoard, deleteBoard } from '@/store/actions/actions';
 import { RootState } from '@/store/reducers/rootReducer';
 
@@ -14,30 +14,30 @@ import {
   StyledBoardInputWrapper,
   BlockWrapper,
   CrossIconWrapper,
+  CardBgColors,
 } from './BoardList.styled';
 
 interface DispatchProps {
-  onAddBoard: (text: string) => void;
+  onAddBoard: (boardName: string, boardColor: string) => void;
   onDeleteBoard: (boardId: string) => void;
 }
 
 interface StateProps {
-  board: IBoardList[];
+  boards: IBoardList[];
 }
 
 type Props = StateProps & DispatchProps;
 
 const BoardList = (props: Props) => {
-  const boards = props.board;
-
   const [boardName, setBoardName] = useState('');
+  const [boardColor, setBoardColor] = useState('');
 
   const changeName = (event: React.FormEvent<HTMLInputElement>) => {
     setBoardName(event.currentTarget.value);
   };
 
   const onAddBoardFunc = () => {
-    props.onAddBoard(boardName);
+    props.onAddBoard(boardName, boardColor);
     setBoardName('');
   };
 
@@ -47,8 +47,8 @@ const BoardList = (props: Props) => {
 
   return (
     <StyledBoardList>
-      {boards?.map(value => (
-        <BlockWrapper key={value.boardId}>
+      {props.boards?.map(value => (
+        <BlockWrapper key={value.boardId} className={value.boardColor}>
           <CrossIconWrapper>
             <CrossIcon className={styles.size_l} onClick={() => deleteBoardFunc(value.boardId)} />
           </CrossIconWrapper>
@@ -68,6 +68,19 @@ const BoardList = (props: Props) => {
             value={boardName}
             onChange={changeName}
           />
+          <CardBgColors>
+            {cardColors.map((color, index) => (
+              <div
+                key={color}
+                className={color}
+                onClick={() => setBoardColor(color)}
+                onKeyDown={() => setBoardColor(color)}
+                role="button"
+                tabIndex={index}
+                aria-label=" "
+              />
+            ))}
+          </CardBgColors>
           <button type="submit" onClick={onAddBoardFunc}>
             +
           </button>
@@ -80,12 +93,13 @@ const BoardList = (props: Props) => {
 const mapStateToProps = (state: RootState) => {
   const boardList: IBoardList[] = state.boardList?.boardList;
   return {
-    board: boardList,
+    boards: boardList,
   };
 };
 
 const mapDispatchToProps = (dispatch: Dispatch<any>) => ({
-  onAddBoard: (text: string) => dispatch(addBoard({ text })),
+  onAddBoard: (boardName: string, boardColor: string) =>
+    dispatch(addBoard({ boardName, boardColor })),
   onDeleteBoard: (boardId: string) => dispatch(deleteBoard({ boardId })),
 });
 

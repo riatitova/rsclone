@@ -14,6 +14,7 @@ const getInitialState = (name = 'Board'): InitialState => {
         boardId: nanoid(),
         boardName: name,
         draggedItem: undefined,
+        boardColor: '',
         boardColumns: [
           {
             columnId: nanoid(),
@@ -22,7 +23,7 @@ const getInitialState = (name = 'Board'): InitialState => {
               {
                 taskId: nanoid(),
                 taskName: 'learn typescript',
-                taskText: 'Task description',
+                taskText: '',
                 taskDate: date,
               },
             ],
@@ -34,13 +35,13 @@ const getInitialState = (name = 'Board'): InitialState => {
               {
                 taskId: nanoid(),
                 taskName: 'write tests',
-                taskText: 'Task description',
+                taskText: '',
                 taskDate: date,
               },
               {
                 taskId: nanoid(),
                 taskName: 'Never gonna give you up',
-                taskText: 'Task description',
+                taskText: '',
                 taskDate: date,
               },
             ],
@@ -52,19 +53,19 @@ const getInitialState = (name = 'Board'): InitialState => {
               {
                 taskId: nanoid(),
                 taskName: 'Never gonna get you down',
-                taskText: 'Task description',
+                taskText: '',
                 taskDate: date,
               },
               {
                 taskId: nanoid(),
                 taskName: 'Never gonna run around',
-                taskText: 'Task description',
+                taskText: '',
                 taskDate: date,
               },
               {
                 taskId: nanoid(),
                 taskName: 'And hurt you',
-                taskText: 'Task description',
+                taskText: '',
                 taskDate: date,
               },
             ],
@@ -74,6 +75,7 @@ const getInitialState = (name = 'Board'): InitialState => {
       {
         boardId: nanoid(),
         boardName: `${name}_1`,
+        boardColor: '',
         draggedItem: undefined,
         boardColumns: [
           {
@@ -83,7 +85,7 @@ const getInitialState = (name = 'Board'): InitialState => {
               {
                 taskId: nanoid(),
                 taskName: 'learn typescript',
-                taskText: 'Task description',
+                taskText: '',
                 taskDate: date,
               },
             ],
@@ -101,7 +103,7 @@ const getInitialState = (name = 'Board'): InitialState => {
               {
                 taskId: nanoid(),
                 taskName: 'Never gonna give you up',
-                taskText: 'Task description',
+                taskText: '',
                 taskDate: date,
               },
             ],
@@ -113,7 +115,7 @@ const getInitialState = (name = 'Board'): InitialState => {
               {
                 taskId: nanoid(),
                 taskName: 'Never gonna get you down',
-                taskText: 'Task description',
+                taskText: '',
                 taskDate: date,
               },
             ],
@@ -124,9 +126,10 @@ const getInitialState = (name = 'Board'): InitialState => {
   };
 };
 
-const getNewBoard = (name: string, boardId: string) => ({
+const getNewBoard = (name: string, color: string, boardId: string) => ({
   boardId,
   boardName: name,
+  boardColor: color,
   draggedItem: undefined,
   boardColumns: [
     {
