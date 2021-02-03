@@ -28,6 +28,8 @@ import {
   CHANGE_TEXT,
   SET_AUTH_TRUE,
   SET_AUTH_FALSE,
+  SET_DISABLE_FALSE,
+  SET_DISABLE_TRUE,
 } from '@/store/actions/actionTypes';
 
 function add() {
@@ -146,6 +148,18 @@ function setAuthFalse() {
   };
 }
 
+function setDisableTrue() {
+  return {
+    type: SET_DISABLE_TRUE,
+  };
+}
+
+function setDisableFalse() {
+  return {
+    type: SET_DISABLE_FALSE,
+  };
+}
+
 export {
   add,
   sub,
@@ -164,4 +178,6 @@ export {
   changeText,
   setAuthTrue,
   setAuthFalse,
+  setDisableTrue,
+  setDisableFalse,
 };

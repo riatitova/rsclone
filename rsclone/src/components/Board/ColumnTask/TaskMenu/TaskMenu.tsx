@@ -29,7 +29,7 @@ interface StateProps {
 
 type Props = StateProps & CardMenuProps & DispatchProps;
 
-const CardMenu: React.FC<Props> = (props: Props) => {
+const TaskMenu: React.FC<Props> = (props: Props) => {
   const [text, setText] = useState(props.taskText);
 
   const deleteCardFunc = () => {
@@ -96,4 +96,4 @@ const mapDispatchToProps = (dispatch: Dispatch<any>) => ({
 export default connect<StateProps, DispatchProps, CardMenuProps>(
   mapStateToProps,
   mapDispatchToProps
-)(CardMenu);
+)(TaskMenu);
