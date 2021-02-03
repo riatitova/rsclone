@@ -70,14 +70,14 @@ export const DragPreviewContainer = styled.div<DragPreviewContainerProps>`
 
 export const ColumnContainer = styled(DragPreviewContainer)`
   position: relative;
-  background-color: #ebecf0;
+  background-color: rgba(255, 237, 80, 0.51);
   width: 18.5rem;
   min-height: 40px;
   margin: 0 10px;
   border-radius: 3px;
   padding: 8px;
   color: #000;
-  background-color: #fbfafa;
+  // background-color: #fbfafa;
   flex-grow: 0;
   flex-shrink: 0;
   border-radius: 10px;

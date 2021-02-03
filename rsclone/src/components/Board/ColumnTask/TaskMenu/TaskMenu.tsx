@@ -59,13 +59,13 @@ const TaskMenu: React.FC<Props> = (props: Props) => {
     <div className={style.popup}>
       <div className={style.card__menu_visible}>
         <h3 className={style.card__name}>
-          Current task:
+          <span>Current task:</span>
           {props.taskName}
         </h3>
-        <div>
+        <div className={style.card__description}>
           <h3>Description: </h3>
           <textarea
-            className={style.card__description}
+            className={style.card__description_content}
             placeholder="Card Description"
             defaultValue={props.taskText}
             onChange={changeTextFunc}
@@ -73,7 +73,7 @@ const TaskMenu: React.FC<Props> = (props: Props) => {
         </div>
         <div className={style.card__date}>
           <h4>Date: </h4>
-          <span>{(props.taskDate || '').toString()}</span>
+          <span>{(props.taskDate || '').toLocaleString()}</span>
         </div>
         <div className={style.card__buttons}>
           <button type="button" className={style.card__button} onClick={deleteCardFunc}>

@@ -34,8 +34,9 @@ const Footer = () => (
       </div>
     </div>
     <div className={style.footer__logo}>
+      <span>2021</span>
       <a className={style.footer__link} href="https://rs.school/js/">
-        <RSSFooterIcon className={`${styles.size_sm} ${style.footer__icon}`} />
+        <RSSFooterIcon className={`${styles.size_sm} ${style.footer__icon} ${style.footer__icon_rs}`} />
       </a>
     </div>
   </footer>
