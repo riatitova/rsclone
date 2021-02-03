@@ -7,7 +7,7 @@ import { RootState } from '@/store/reducers/rootReducer';
 import { setAuthTrue, setAuthFalse } from '../../store/actions/actions';
 import { createUser } from '../../store/effects/fetchEffects';
 
-import Authorisation from './Autharisation';
+import Authorisation from './Authorisation';
 
 const mapStateToProps = (state: RootState) => ({
   isAuth: state.authorization.isAuth,

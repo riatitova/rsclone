@@ -1,0 +1,65 @@
+@import "../../assets/stylesheets/index.scss";
+
+.auth {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  height: 9rem;
+
+  &__input {
+    width: 10rem;
+    height: 2rem;
+    margin: 0.5rem;
+    padding-left: 0.3rem;
+    color: #000;
+    border: 1px solid #e9e9e9;
+    border-radius: 0.6rem;
+    outline: none;
+  }
+  &__button {
+    width: 6rem;
+    height: 2rem;
+    margin: 0.5rem 0.5rem 0.5rem 0;
+    border-radius: 0.6rem;
+    border: none;
+    outline: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: $color-white;
+    background-color: $color-blue-button;
+    text-transform: uppercase;
+    text-align: center;
+    box-shadow: 0.3rem 0.3rem 1rem 0 rgba(0, 0, 0, 0.1);
+
+    &:hover {
+      cursor: pointer;
+      color: $color-blue-button;
+      background-color: $color-white;
+      box-shadow: 0.5rem 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
+      transition: all 0.5s ease;
+    }
+
+    &:not(:hover) {
+      transition: all 0.5s ease;
+    }
+    &:active {
+      transform: translateY(4px);
+    }
+  }
+
+  &__title {
+    line-height: 3rem;
+    vertical-align: middle;
+  }
+}
+
+@media (max-width: 400px) {
+  .auth {
+    justify-content: flex-start;
+    padding-left: 1rem;
+    &__button {
+      margin: 0.5rem;
+    }
+  }
+}
