@@ -17,14 +17,14 @@ const StyledBurger = styled.button<IMenu>`
   padding: 0;
   z-index: 11;
   @media (min-width: 480px) and (max-width: 550px) {
-     width: 1.6rem;
-     height: 1.6rem;
-     margin: 0 0.2rem;
+    width: 1.6rem;
+    height: 1.6rem;
+    margin: 0 0.2rem;
   }
   @media (max-width: 479px) {
-     width: 1.5rem;
-     height: 1.5rem;
-     margin: 0 0.1rem;
+    width: 1.5rem;
+    height: 1.5rem;
+    margin: 0 0.1rem;
   }
 
   &:focus {
@@ -40,10 +40,10 @@ const StyledBurger = styled.button<IMenu>`
     transition: all 0.3s linear;
     transform-origin: 1px;
     @media (max-width: 550px) {
-        width: 1.6rem;
+      width: 1.6rem;
     }
     @media (max-width: 479px) {
-     width: 1.5rem;
+      width: 1.5rem;
     }
 
     :first-child {
@@ -58,8 +58,6 @@ const StyledBurger = styled.button<IMenu>`
     :nth-child(3) {
       transform: ${({ open }) => (open ? 'rotate(-45deg)' : 'rotate(0)')};
     }
-    
-    
   }
 `;
 

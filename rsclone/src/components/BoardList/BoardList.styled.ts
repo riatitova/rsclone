@@ -22,33 +22,33 @@ export const BlockWrapper = styled.div`
   // line-height: 7rem;
   box-shadow: 0.2rem 0.2rem 1rem 0 rgba(0, 0, 0, 0.1);
   cursor: pointer;
-  
+
   &.blue {
     background-color: rgba(6, 202, 254, 0.21);
   }
-  
+
   &.red {
     background-color: rgba(217, 165, 165, 1);
   }
-  
+
   &.yellow {
     background-color: rgba(255, 237, 80, 0.51);
   }
-  
+
   &.green {
     background-color: rgba(85, 255, 102, 1);
   }
-  
+
   a {
-  display: block;
-  width: 10rem;
-  height: 7rem;
-  color: #000;
-  text-decoration: none;
-  color: #000;
-  font-size: 0.9rem;
-  font-weight: 600;
-  text-transform: uppercase;
+    display: block;
+    width: 10rem;
+    height: 7rem;
+    color: #000;
+    text-decoration: none;
+    color: #000;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
   }
 `;
 
@@ -58,7 +58,6 @@ export const CrossIconWrapper = styled.div`
   right: 0;
   color: grey;
   font-weight: 500;
- 
 `;
 
 export const StyledAddBoardBlock = styled.div`
@@ -154,18 +153,18 @@ export const CardBgColors = styled.div`
       transition: all 0.5s ease;
     }
   }
-   .blue {
+  .blue {
     background-color: rgba(6, 202, 254, 0.5);
   }
-  
+
   .red {
     background-color: rgba(217, 165, 165, 1);
   }
-  
+
   .yellow {
     background-color: rgba(255, 237, 80, 0.7);
   }
-  
+
   .green {
     background-color: rgba(85, 255, 102, 1);
   }
